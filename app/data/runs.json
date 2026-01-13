@@ -1,0 +1,1677 @@
+{
+  "next_run_id": 4,
+  "runs": {
+    "1": {
+      "run_id": 1,
+      "created_at": "2026-01-05 21:30:27",
+      "updated_at": "2026-01-05 21:33:32",
+      "meta_title": "민감 피부 수분크림 | CalmBarrier",
+      "meta_description": "세라마이드·판테놀로 피부 장벽을 편안하게 케어하는 데일리 수분 진정 크림. 끈적임 없이 산뜻하게 마무리하고 15% 런칭 혜택으로 만나보세요.",
+      "landing_text": "CalmBarrier 데일리 수분 진정 크림은 민감하고 건조한 피부를 위한 보습 크림입니다.\n세라마이드와 판테놀 성분으로 피부 장벽 케어에 도움을 주며, 끈적임 없이 산뜻한 사용감을 제공합니다.\n\n아침·저녁 모두 사용 가능하며, 세안 후 토너 다음 단계에서 적당량을 펴 발라 흡수시켜 주세요.\n민감한 경우에는 먼저 패치 테스트를 권장합니다.\n\n지금 런칭 15% 할인 + 무료배송 혜택으로 만나보세요.\n",
+      "h1": "",
+      "body_html": "CalmBarrier 데일리 수분 진정 크림은 민감하고 건조한 피부를 위한 보습 크림입니다.\n세라마이드와 판테놀 성분으로 피부 장벽 케어에 도움을 주며, 끈적임 없이 산뜻한 사용감을 제공합니다.\n\n아침·저녁 모두 사용 가능하며, 세안 후 토너 다음 단계에서 적당량을 펴 발라 흡수시켜 주세요.\n민감한 경우에는 먼저 패치 테스트를 권장합니다.\n\n지금 런칭 15% 할인 + 무료배송 혜택으로 만나보세요.\n",
+      "cta": "",
+      "faq": [],
+      "primary_keyword": "민감 피부 수분크림",
+      "supporting_keywords": [
+        "세라마이드",
+        "판테놀",
+        "장벽",
+        "진정",
+        "저자극"
+      ],
+      "intent": "구매형",
+      "events": [
+        {
+          "event_id": 1,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:32:52"
+        },
+        {
+          "event_id": 2,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:32:53"
+        },
+        {
+          "event_id": 3,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:32:53"
+        },
+        {
+          "event_id": 4,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:32:53"
+        },
+        {
+          "event_id": 5,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:32:54"
+        },
+        {
+          "event_id": 6,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:32:54"
+        },
+        {
+          "event_id": 7,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:02"
+        },
+        {
+          "event_id": 8,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:24"
+        },
+        {
+          "event_id": 9,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:25"
+        },
+        {
+          "event_id": 10,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 11,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 12,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 13,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 14,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 15,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 16,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:26"
+        },
+        {
+          "event_id": 17,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:27"
+        },
+        {
+          "event_id": 18,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:27"
+        },
+        {
+          "event_id": 19,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:28"
+        },
+        {
+          "event_id": 20,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:28"
+        },
+        {
+          "event_id": 21,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:28"
+        },
+        {
+          "event_id": 22,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:28"
+        },
+        {
+          "event_id": 23,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:28"
+        },
+        {
+          "event_id": 24,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 25,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 26,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 27,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 28,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 29,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 30,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:29"
+        },
+        {
+          "event_id": 31,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 32,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 33,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 34,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 35,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 36,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 37,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:33:30"
+        },
+        {
+          "event_id": 38,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:33:31"
+        },
+        {
+          "event_id": 39,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:33:31"
+        },
+        {
+          "event_id": 40,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:33:32"
+        },
+        {
+          "event_id": 41,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:33:32"
+        },
+        {
+          "event_id": 42,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:33:32"
+        },
+        {
+          "event_id": 43,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:33:32"
+        }
+      ],
+      "approved": null,
+      "optimize": null,
+      "audit": {
+        "overall": "WARN",
+        "score": 70,
+        "issues": [
+          {
+            "rule_id": "T004",
+            "severity": "WARN",
+            "message": "Meta description 길이가 권장 범위(70~160자)가 아닙니다. (len=65)",
+            "fix_hint": "너무 짧으면 설명 보강, 너무 길면 핵심만 남기기."
+          },
+          {
+            "rule_id": "T005",
+            "severity": "WARN",
+            "message": "Canonical이 없습니다.",
+            "fix_hint": "배포 URL이 정해지면 canonical을 고정하세요(placeholder라도 추가)."
+          },
+          {
+            "rule_id": "C005",
+            "severity": "WARN",
+            "message": "본문이 얇습니다(단어 수 195).",
+            "fix_hint": "섹션을 확장해 350~600단어 수준으로 보강하세요."
+          }
+        ],
+        "signals": {
+          "title_len": 33,
+          "desc_len": 65,
+          "h1_count": 1,
+          "h2_count": 5,
+          "word_count": 195,
+          "primary_kw_in_h1": true,
+          "primary_kw_in_first120": true,
+          "supporting_kw_hits": 5,
+          "faq_count": 3,
+          "has_faq_jsonld": true,
+          "primary_kw_density_pct": 1.5385
+        }
+      },
+      "fixed": {
+        "meta_title": "민감 피부 수분크림 | 세라마이드와 판테놀로 피부 장벽 강화",
+        "meta_description": "민감 피부를 위한 수분 진정 크림. 세라마이드와 판테놀로 피부 장벽을 강화하고, 15% 런칭 혜택을 지금 만나보세요!",
+        "canonical_url": "",
+        "og_title": "민감 피부 수분크림 | 세라마이드와 판테놀로 장벽 케어",
+        "og_description": "민감 피부를 위한 수분 진정 크림. 세라마이드와 판테놀로 피부 장벽을 편안하게 케어하고 15% 런칭 혜택을 놓치지 마세요.",
+        "h1": "민감 피부 수분크림으로 피부 장벽을 지키세요",
+        "body_html": "<h2>제품 소개</h2>\n<p>민감 피부 수분크림은 민감하고 건조한 피부를 위한 최적의 보습 크림입니다. 이 제품은 세라마이드와 판테놀 성분이 포함되어 있어 피부 장벽을 효과적으로 케어합니다. 민감한 피부를 가진 분들에게 특히 추천합니다.</p>\n<p>이 크림은 끈적임 없이 산뜻한 사용감을 제공하여 아침과 저녁 모두 사용하기 적합합니다. 피부에 부드럽게 스며들어 수분을 공급하고 진정 효과를 느낄 수 있습니다.</p>\n<ul><li>세라마이드: 피부 장벽 강화</li><li>판테놀: 피부 진정 효과</li></ul>\n<h2>사용법</h2>\n<p>세안 후 토너 다음 단계에서 적당량을 펴 발라 흡수시켜 주세요. 민감한 경우에는 먼저 패치 테스트를 권장합니다.</p>\n<p>이 제품은 아침과 저녁 모두 사용 가능하여, 일상적인 피부 관리에 적합합니다.</p>\n<ul><li>아침·저녁 사용 가능</li><li>패치 테스트 권장</li></ul>\n<h2>주요 성분</h2>\n<p>이 크림의 주요 성분인 세라마이드는 피부 장벽을 강화하고 수분 손실을 방지합니다. 특히 민감한 피부를 보호하는 데 효과적입니다.</p>\n<p>판테놀은 피부를 진정시키고 보습 효과를 극대화하여, 건강한 피부를 유지하는 데 도움을 줍니다.</p>\n<ul><li>세라마이드: 피부 장벽 보호</li><li>판테놀: 수분 공급 및 진정</li></ul>\n<h2>자주 묻는 질문(FAQ)</h2>\n<p>민감 피부 수분크림은 모든 피부 타입에 사용할 수 있나요?</p>\n<p>네, 민감 피부를 포함한 모든 피부 타입에 적합합니다.</p>\n<ul><li>이 제품은 저자극인가요?</li><li>네, 저자극 성분으로 만들어져 민감한 피부에도 안전합니다.</li></ul>\n<h2>구매 정보</h2>\n<p>민감 피부 수분크림은 아침과 저녁, 하루 두 번 사용을 권장합니다. 피부에 맞는 사용법으로 건강한 피부를 유지하세요.</p>\n<p>지금 15% 할인 혜택으로 구매하세요!</p>\n<p><small>개인차가 있을 수 있으니, 사용 전 패치 테스트를 권장합니다.</small></p>",
+        "cta": "지금 15% 할인 혜택으로 구매하세요!",
+        "faq": [
+          {
+            "q": "얼마나 자주 사용해야 하나요?",
+            "a": "아침과 저녁, 하루 두 번 사용을 권장합니다."
+          },
+          {
+            "q": "민감 피부 수분크림은 저자극인가요?",
+            "a": "네, 저자극 성분으로 만들어져 민감한 피부에도 안전합니다."
+          },
+          {
+            "q": "이 제품은 모든 피부 타입에 사용할 수 있나요?",
+            "a": "네, 민감 피부를 포함한 모든 피부 타입에 적합합니다."
+          }
+        ],
+        "has_faq_jsonld": true
+      }
+    },
+    "2": {
+      "run_id": 2,
+      "created_at": "2026-01-05 21:36:47",
+      "updated_at": "2026-01-05 21:41:50",
+      "meta_title": "민감 피부 수분크림 | CalmBarrier",
+      "meta_description": "세라마이드·판테놀로 피부 장벽을 편안하게 케어하는 데일리 수분 진정 크림. 끈적임 없이 산뜻하게 마무리하고 15% 런칭 혜택으로 만나보세요.",
+      "landing_text": "CalmBarrier 데일리 수분 진정 크림은 민감하고 건조한 피부를 위한 보습 크림입니다.\n세라마이드와 판테놀 성분으로 피부 장벽 케어에 도움을 주며, 끈적임 없이 산뜻한 사용감을 제공합니다.\n\n아침·저녁 모두 사용 가능하며, 세안 후 토너 다음 단계에서 적당량을 펴 발라 흡수시켜 주세요.\n민감한 경우에는 먼저 패치 테스트를 권장합니다.\n\n지금 런칭 15% 할인 + 무료배송 혜택으로 만나보세요.\n",
+      "h1": "",
+      "body_html": "CalmBarrier 데일리 수분 진정 크림은 민감하고 건조한 피부를 위한 보습 크림입니다.\n세라마이드와 판테놀 성분으로 피부 장벽 케어에 도움을 주며, 끈적임 없이 산뜻한 사용감을 제공합니다.\n\n아침·저녁 모두 사용 가능하며, 세안 후 토너 다음 단계에서 적당량을 펴 발라 흡수시켜 주세요.\n민감한 경우에는 먼저 패치 테스트를 권장합니다.\n\n지금 런칭 15% 할인 + 무료배송 혜택으로 만나보세요.\n",
+      "cta": "",
+      "faq": [],
+      "primary_keyword": "민감 피부 수분크림",
+      "supporting_keywords": [
+        "세라마이드",
+        "판테놀",
+        "장벽",
+        "진정",
+        "저자극"
+      ],
+      "intent": "구매형",
+      "events": [
+        {
+          "event_id": 1,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:37:52"
+        },
+        {
+          "event_id": 2,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:37:53"
+        },
+        {
+          "event_id": 3,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:08"
+        },
+        {
+          "event_id": 4,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:09"
+        },
+        {
+          "event_id": 5,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:09"
+        },
+        {
+          "event_id": 6,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:09"
+        },
+        {
+          "event_id": 7,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:10"
+        },
+        {
+          "event_id": 8,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:11"
+        },
+        {
+          "event_id": 9,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:11"
+        },
+        {
+          "event_id": 10,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:12"
+        },
+        {
+          "event_id": 11,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:12"
+        },
+        {
+          "event_id": 12,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:12"
+        },
+        {
+          "event_id": 13,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 14,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 15,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 16,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 17,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 18,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 19,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:15"
+        },
+        {
+          "event_id": 20,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:16"
+        },
+        {
+          "event_id": 21,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:16"
+        },
+        {
+          "event_id": 22,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:16"
+        },
+        {
+          "event_id": 23,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:16"
+        },
+        {
+          "event_id": 24,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:16"
+        },
+        {
+          "event_id": 25,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:17"
+        },
+        {
+          "event_id": 26,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:17"
+        },
+        {
+          "event_id": 27,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:17"
+        },
+        {
+          "event_id": 28,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:17"
+        },
+        {
+          "event_id": 29,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:18"
+        },
+        {
+          "event_id": 30,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:18"
+        },
+        {
+          "event_id": 31,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:18"
+        },
+        {
+          "event_id": 32,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:18"
+        },
+        {
+          "event_id": 33,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 34,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 35,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 36,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 37,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 38,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 39,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:21"
+        },
+        {
+          "event_id": 40,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 41,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 42,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 43,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 44,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 45,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 46,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 47,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:22"
+        },
+        {
+          "event_id": 48,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:23"
+        },
+        {
+          "event_id": 49,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 21:41:24"
+        },
+        {
+          "event_id": 50,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:26"
+        },
+        {
+          "event_id": 51,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:26"
+        },
+        {
+          "event_id": 52,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:26"
+        },
+        {
+          "event_id": 53,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:26"
+        },
+        {
+          "event_id": 54,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 55,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 56,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 57,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 58,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 59,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 60,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:27"
+        },
+        {
+          "event_id": 61,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:28"
+        },
+        {
+          "event_id": 62,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:28"
+        },
+        {
+          "event_id": 63,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:28"
+        },
+        {
+          "event_id": 64,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:28"
+        },
+        {
+          "event_id": 65,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:28"
+        },
+        {
+          "event_id": 66,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:29"
+        },
+        {
+          "event_id": 67,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:29"
+        },
+        {
+          "event_id": 68,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:29"
+        },
+        {
+          "event_id": 69,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:29"
+        },
+        {
+          "event_id": 70,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:29"
+        },
+        {
+          "event_id": 71,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:29"
+        },
+        {
+          "event_id": 72,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 73,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 74,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 75,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 76,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 77,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 78,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:30"
+        },
+        {
+          "event_id": 79,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:31"
+        },
+        {
+          "event_id": 80,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:31"
+        },
+        {
+          "event_id": 81,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:31"
+        },
+        {
+          "event_id": 82,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 21:41:31"
+        }
+      ],
+      "approved": {
+        "variant": "A",
+        "ts": "2026-01-05 21:41:50",
+        "method": "manual"
+      },
+      "optimize": {
+        "variants": {
+          "A": {
+            "meta_title": "민감 피부 수분크림 | CalmBarrier",
+            "meta_description": "세라마이드와 판테놀로 민감 피부를 부드럽게 케어하는 수분크림. 지금 15% 할인 혜택을 놓치지 마세요!",
+            "hero_headline": "민감 피부 수분크림으로 피부 장벽 강화",
+            "hero_sub": "저자극 성분으로 하루 종일 편안함을 제공합니다.",
+            "cta": "지금 구매하고 무료배송 혜택을 누리세요!",
+            "faq": [
+              {
+                "q": "이 크림은 어떤 피부에 적합한가요?",
+                "a": "민감하고 건조한 피부에 적합합니다."
+              },
+              {
+                "q": "사용 방법은 어떻게 되나요?",
+                "a": "세안 후 토너 다음 단계에서 적당량을 발라주세요."
+              },
+              {
+                "q": "패치 테스트는 어떻게 하나요?",
+                "a": "작은 부위에 소량을 발라 24시간 확인하세요."
+              },
+              {
+                "q": "이 크림은 언제 사용하나요?",
+                "a": "아침과 저녁 모두 사용 가능합니다."
+              },
+              {
+                "q": "세라마이드와 판테놀의 효과는 무엇인가요?",
+                "a": "피부 장벽을 강화하고 수분을 유지하는 데 도움을 줍니다."
+              }
+            ]
+          },
+          "B": {
+            "meta_title": "수분크림으로 민감 피부 진정 | CalmBarrier",
+            "meta_description": "세라마이드와 판테놀로 민감 피부에 수분을 공급하고 장벽을 강화하는 크림. 지금 15% 할인 중입니다!",
+            "hero_headline": "민감 피부를 위한 최적의 수분크림",
+            "hero_sub": "산뜻한 사용감으로 저자극 케어를 제공합니다.",
+            "cta": "무료배송 혜택과 함께 지금 구매하세요!",
+            "faq": [
+              {
+                "q": "이 제품은 어떤 성분이 포함되어 있나요?",
+                "a": "세라마이드와 판테놀을 포함하고 있습니다."
+              },
+              {
+                "q": "얼마나 자주 사용해야 하나요?",
+                "a": "아침과 저녁에 사용하시는 것이 좋습니다."
+              },
+              {
+                "q": "끈적임이 없나요?",
+                "a": "네, 산뜻한 사용감을 제공합니다."
+              },
+              {
+                "q": "민감한 피부에도 안전한가요?",
+                "a": "저자극 성분으로 민감한 피부에 적합합니다."
+              },
+              {
+                "q": "할인 혜택은 언제까지인가요?",
+                "a": "현재 런칭 기념으로 15% 할인 중입니다."
+              }
+            ]
+          }
+        },
+        "notes": [
+          "민감 피부를 위한 카피는 과장 없는 표현으로 작성했습니다.",
+          "고객의 관심을 끌기 위해 할인 혜택을 강조했습니다."
+        ]
+      },
+      "audit": null,
+      "fixed": null,
+      "qc_variants": {
+        "A": {
+          "grade": "PASS",
+          "hits": [],
+          "notes": []
+        },
+        "B": {
+          "grade": "PASS",
+          "hits": [],
+          "notes": []
+        }
+      }
+    },
+    "3": {
+      "run_id": 3,
+      "created_at": "2026-01-05 22:05:55",
+      "updated_at": "2026-01-05 22:11:20",
+      "meta_title": "민감 피부 수분크림 CalmBarrier | 세라마이드 장벽케어",
+      "meta_description": "민감 피부를 위한 수분·장벽 케어. 세라마이드·판테놀로 보습과 진정을 돕는 CalmBarrier 수분크림을 소개합니다. 성분과 사용감을 확인해보세요.",
+      "landing_text": "CalmBarrier 민감 피부 수분크림\n\n민감해진 피부를 위해 보습과 장벽 케어에 초점을 둔 수분크림입니다. 세라마이드와 판테놀 성분을 중심으로 건조함 완화와 진정에 도움을 줄 수 있도록 설계했습니다.\n\n주요 포인트\n- 세라마이드: 장벽 케어에 도움\n- 판테놀: 보습 및 진정에 도움\n- 끈적임을 줄인 데일리 사용감\n\n이런 분께 추천\n- 세안 후 당김이 심한 민감 피부\n- 보습은 원하지만 무거운 제형이 부담인 경우\n\n사용 방법\n세안 후 토너 다음 단계에서 적당량을 펴 바르고 건조한 부위는 한 번 더 레이어링하세요.\n\nFAQ\nQ. 민감 피부도 사용 가능한가요?\nA. 민감 피부를 고려해 설계했으며, 개인차가 있으니 패치 테스트를 권장합니다.\n\nQ. 아침/저녁 모두 사용해도 되나요?\nA. 네, 데일리 케어 용도로 아침/저녁 모두 사용 가능합니다.\n\nQ. 어떤 향이 나나요?\nA. 제품별로 상이할 수 있으며, 상세 페이지 표기를 확인해주세요.\n",
+      "h1": "",
+      "body_html": "CalmBarrier 민감 피부 수분크림\n\n민감해진 피부를 위해 보습과 장벽 케어에 초점을 둔 수분크림입니다. 세라마이드와 판테놀 성분을 중심으로 건조함 완화와 진정에 도움을 줄 수 있도록 설계했습니다.\n\n주요 포인트\n- 세라마이드: 장벽 케어에 도움\n- 판테놀: 보습 및 진정에 도움\n- 끈적임을 줄인 데일리 사용감\n\n이런 분께 추천\n- 세안 후 당김이 심한 민감 피부\n- 보습은 원하지만 무거운 제형이 부담인 경우\n\n사용 방법\n세안 후 토너 다음 단계에서 적당량을 펴 바르고 건조한 부위는 한 번 더 레이어링하세요.\n\nFAQ\nQ. 민감 피부도 사용 가능한가요?\nA. 민감 피부를 고려해 설계했으며, 개인차가 있으니 패치 테스트를 권장합니다.\n\nQ. 아침/저녁 모두 사용해도 되나요?\nA. 네, 데일리 케어 용도로 아침/저녁 모두 사용 가능합니다.\n\nQ. 어떤 향이 나나요?\nA. 제품별로 상이할 수 있으며, 상세 페이지 표기를 확인해주세요.\n",
+      "cta": "",
+      "faq": [],
+      "primary_keyword": "민감 피부 수분크림",
+      "supporting_keywords": [
+        "세라마이드",
+        "판테놀",
+        "장벽케어",
+        "진정",
+        "저자극"
+      ],
+      "intent": "구매형",
+      "events": [
+        {
+          "event_id": 1,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:16"
+        },
+        {
+          "event_id": 2,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:16"
+        },
+        {
+          "event_id": 3,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:16"
+        },
+        {
+          "event_id": 4,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:16"
+        },
+        {
+          "event_id": 5,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:16"
+        },
+        {
+          "event_id": 6,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:16"
+        },
+        {
+          "event_id": 7,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 8,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 9,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 10,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 11,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 12,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 13,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:17"
+        },
+        {
+          "event_id": 14,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:18"
+        },
+        {
+          "event_id": 15,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:18"
+        },
+        {
+          "event_id": 16,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:18"
+        },
+        {
+          "event_id": 17,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:18"
+        },
+        {
+          "event_id": 18,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:18"
+        },
+        {
+          "event_id": 19,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:18"
+        },
+        {
+          "event_id": 20,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:19"
+        },
+        {
+          "event_id": 21,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:20"
+        },
+        {
+          "event_id": 22,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:20"
+        },
+        {
+          "event_id": 23,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:20"
+        },
+        {
+          "event_id": 24,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:20"
+        },
+        {
+          "event_id": 25,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:20"
+        },
+        {
+          "event_id": 26,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 27,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 28,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 29,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 30,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 31,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 32,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:21"
+        },
+        {
+          "event_id": 33,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 34,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 35,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 36,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 37,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 38,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 39,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:22"
+        },
+        {
+          "event_id": 40,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 41,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 42,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 43,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 44,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 45,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 46,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:23"
+        },
+        {
+          "event_id": 47,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:24"
+        },
+        {
+          "event_id": 48,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:24"
+        },
+        {
+          "event_id": 49,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:24"
+        },
+        {
+          "event_id": 50,
+          "variant": "B",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:24"
+        },
+        {
+          "event_id": 51,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:25"
+        },
+        {
+          "event_id": 52,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:25"
+        },
+        {
+          "event_id": 53,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:25"
+        },
+        {
+          "event_id": 54,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:26"
+        },
+        {
+          "event_id": 55,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:26"
+        },
+        {
+          "event_id": 56,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:26"
+        },
+        {
+          "event_id": 57,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:26"
+        },
+        {
+          "event_id": 58,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:26"
+        },
+        {
+          "event_id": 59,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:27"
+        },
+        {
+          "event_id": 60,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:27"
+        },
+        {
+          "event_id": 61,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:27"
+        },
+        {
+          "event_id": 62,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 63,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 64,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 65,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 66,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 67,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 68,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:28"
+        },
+        {
+          "event_id": 69,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:29"
+        },
+        {
+          "event_id": 70,
+          "variant": "B",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:29"
+        },
+        {
+          "event_id": 71,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:30"
+        },
+        {
+          "event_id": 72,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:31"
+        },
+        {
+          "event_id": 73,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:31"
+        },
+        {
+          "event_id": 74,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:31"
+        },
+        {
+          "event_id": 75,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:31"
+        },
+        {
+          "event_id": 76,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:31"
+        },
+        {
+          "event_id": 77,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:31"
+        },
+        {
+          "event_id": 78,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:32"
+        },
+        {
+          "event_id": 79,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:32"
+        },
+        {
+          "event_id": 80,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:32"
+        },
+        {
+          "event_id": 81,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:33"
+        },
+        {
+          "event_id": 82,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 83,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 84,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 85,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 86,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 87,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 88,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:34"
+        },
+        {
+          "event_id": 89,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:35"
+        },
+        {
+          "event_id": 90,
+          "variant": "A",
+          "event_name": "view",
+          "ts": "2026-01-05 22:06:35"
+        },
+        {
+          "event_id": 91,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:36"
+        },
+        {
+          "event_id": 92,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:36"
+        },
+        {
+          "event_id": 93,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:36"
+        },
+        {
+          "event_id": 94,
+          "variant": "A",
+          "event_name": "cta_click",
+          "ts": "2026-01-05 22:06:36"
+        }
+      ],
+      "approved": {
+        "variant": "A",
+        "ts": "2026-01-05 22:06:50",
+        "method": "recommended",
+        "summary": {
+          "A": {
+            "view": 30,
+            "click": 22,
+            "ctr": 0.7333333333333333
+          },
+          "B": {
+            "view": 30,
+            "click": 12,
+            "ctr": 0.4
+          },
+          "uplift": -0.33333333333333326,
+          "z": -2.6052505285945298,
+          "p_value": 0.009180710329776964,
+          "min_views_required": 20,
+          "recommend_variant": "A"
+        }
+      },
+      "optimize": {
+        "variants": {
+          "A": {
+            "meta_title": "민감 피부 수분크림 CalmBarrier | 세라마이드로 장벽 케어",
+            "meta_description": "민감 피부를 위한 수분 크림. 세라마이드와 판테놀로 장벽 케어와 진정을 경험하세요. CalmBarrier 수분크림을 만나보세요.",
+            "hero_headline": "민감 피부 수분크림 CalmBarrier",
+            "hero_sub": "세라마이드로 장벽을 강화하는 수분 크림",
+            "cta": "지금 구매하기",
+            "faq": [
+              {
+                "q": "민감 피부도 사용 가능한가요?",
+                "a": "민감 피부를 고려해 설계하였으나, 패치 테스트를 권장합니다."
+              },
+              {
+                "q": "아침/저녁 모두 사용해도 되나요?",
+                "a": "네, 아침과 저녁 모두 데일리 케어로 사용 가능합니다."
+              },
+              {
+                "q": "이 제품의 향은 어떤가요?",
+                "a": "제품별로 상이하니 상세 페이지에서 확인해 주세요."
+              }
+            ]
+          },
+          "B": {
+            "meta_title": "CalmBarrier 민감 피부 수분크림 | 저자극 보습 크림",
+            "meta_description": "민감 피부를 위한 저자극 수분크림. 세라마이드와 판테놀로 장벽 케어와 보습을 동시에! CalmBarrier를 경험해보세요.",
+            "hero_headline": "CalmBarrier 민감 피부 수분크림",
+            "hero_sub": "저자극 성분으로 편안한 수분 공급",
+            "cta": "지금 확인하기",
+            "faq": [
+              {
+                "q": "이 제품은 모든 피부 타입에 적합한가요?",
+                "a": "민감 피부를 위해 설계되었지만, 개인차가 있을 수 있습니다."
+              },
+              {
+                "q": "세안 후 언제 사용해야 하나요?",
+                "a": "세안 후 토너 다음 단계에서 사용하세요."
+              },
+              {
+                "q": "끈적임은 없나요?",
+                "a": "끈적임을 줄인 데일리 사용감으로 설계되었습니다."
+              }
+            ]
+          }
+        },
+        "notes": [
+          "각 변형은 민감 피부에 대한 보습 및 장벽 케어 강조.",
+          "FAQ는 고객의 실제 질문을 반영하여 작성."
+        ]
+      },
+      "audit": {
+        "overall": "WARN",
+        "score": 80,
+        "issues": [
+          {
+            "rule_id": "T005",
+            "severity": "WARN",
+            "message": "Canonical이 없습니다.",
+            "fix_hint": "배포 URL이 정해지면 canonical을 고정하세요(placeholder라도 추가)."
+          },
+          {
+            "rule_id": "C005",
+            "severity": "WARN",
+            "message": "본문이 얇습니다(단어 수 156).",
+            "fix_hint": "섹션을 확장해 350~600단어 수준으로 보강하세요."
+          }
+        ],
+        "signals": {
+          "title_len": 37,
+          "desc_len": 70,
+          "h1_count": 1,
+          "h2_count": 4,
+          "word_count": 156,
+          "primary_kw_in_h1": true,
+          "primary_kw_in_first120": true,
+          "supporting_kw_hits": 4,
+          "faq_count": 3,
+          "has_faq_jsonld": true,
+          "primary_kw_density_pct": 0.641
+        }
+      },
+      "fixed": {
+        "meta_title": "민감 피부 수분크림 CalmBarrier | 세라마이드로 장벽 케어",
+        "meta_description": "민감 피부를 위한 수분 크림. 세라마이드와 판테놀로 장벽 케어와 진정을 경험하세요. CalmBarrier로 피부를 보호하세요.",
+        "canonical_url": "",
+        "og_title": "민감 피부 수분크림 CalmBarrier | 세라마이드로 장벽 케어",
+        "og_description": "민감 피부를 위한 수분 크림. 세라마이드와 판테놀로 장벽 케어와 진정을 경험하세요. CalmBarrier 수분크림을 만나보세요.",
+        "h1": "민감 피부 수분크림 CalmBarrier",
+        "body_html": "<h2>민감 피부 수분크림의 특징</h2>\n<p>민감 피부를 위한 CalmBarrier 수분크림은 세라마이드와 판테놀을 함유하여 피부 장벽을 강화하고 깊은 보습을 제공합니다. 민감한 피부를 가진 분들이 안심하고 사용할 수 있도록 저자극으로 설계되었습니다.</p>\n<p>이 제품은 피부의 수분을 유지하고 진정 효과를 통해 자극받은 피부를 빠르게 회복시켜 줍니다. 매일 아침과 저녁에 사용하면 최상의 효과를 누릴 수 있습니다.</p>\n<ul><li>세라마이드: 피부 장벽 강화 및 수분 유지</li><li>판테놀: 깊은 보습과 진정 효과</li></ul>\n<h2>사용 방법</h2>\n<p>세안 후 토너 다음 단계에서 적당량을 펴 바르고, 건조한 부위는 한 번 더 레이어링하여 사용하세요. 이 제품은 끈적임이 적어 데일리 사용에 적합합니다.</p>\n<p>아침과 저녁에 꾸준히 사용하면 피부의 수분감을 더욱 높일 수 있습니다.</p>\n<ul><li>세안 후 사용</li><li>아침/저녁 모두 사용 가능</li></ul>\n<h2>추천 대상</h2>\n<p>이 수분크림은 세안 후 피부가 당기는 민감한 분들께 추천합니다. 보습은 원하지만 무거운 제형이 부담스러운 분들에게 적합합니다.</p>\n<p>저자극으로 설계되어 민감한 피부에도 안전하게 사용할 수 있습니다.</p>\n<ul><li>세안 후 당김이 심한 민감 피부</li><li>무거운 제형이 부담인 경우</li></ul>\n<h2>자주 묻는 질문</h2>\n<p>개인차가 있을 수 있으니 패치 테스트를 권장합니다.</p>\n<p><small>개인차가 있을 수 있으니 패치 테스트를 권장합니다.</small></p>",
+        "cta": "지금 구매하기",
+        "faq": [
+          {
+            "q": "민감 피부에도 안전한가요?",
+            "a": "네, 저자극으로 설계되어 민감한 피부에도 안전하게 사용할 수 있습니다."
+          },
+          {
+            "q": "얼마나 자주 사용해야 하나요?",
+            "a": "아침과 저녁에 꾸준히 사용하시면 좋습니다."
+          },
+          {
+            "q": "세라마이드와 판테놀의 효과는?",
+            "a": "세라마이드는 피부 장벽을 강화하고, 판테놀은 깊은 보습과 진정 효과를 제공합니다."
+          }
+        ],
+        "has_faq_jsonld": true
+      },
+      "qc_variants": {
+        "A": {
+          "grade": "PASS",
+          "hits": [],
+          "notes": []
+        },
+        "B": {
+          "grade": "PASS",
+          "hits": [],
+          "notes": []
+        }
+      }
+    }
+  }
+}

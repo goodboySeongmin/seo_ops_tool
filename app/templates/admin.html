@@ -1,0 +1,1263 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SEO Landing Ops Tool · Admin</title>
+  <style>
+    :root{
+      --bg:#f7f9fc; --card:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
+      --accent:#2563eb; --good:#16a34a; --warn:#f59e0b; --bad:#ef4444;
+      --shadow:0 8px 22px rgba(17,24,39,.06);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text);}
+    header{background:var(--card); border-bottom:1px solid var(--line); padding:14px 18px; position:sticky; top:0; z-index:10}
+    .topbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .brand{display:flex; align-items:center; gap:10px; margin-right:8px}
+    .logo{width:28px; height:28px; border-radius:10px; background:linear-gradient(135deg,#60a5fa,#2563eb)}
+    .brand h1{font-size:14px; margin:0; font-weight:800}
+    .brand .sub{font-size:12px; color:var(--muted)}
+    .chip{border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 10px; display:flex; gap:8px; align-items:center}
+    input, select{border:1px solid var(--line); border-radius:12px; padding:10px 12px; font-size:13px; background:#fff; outline:none}
+    input:focus, select:focus{border-color:#93c5fd; box-shadow:0 0 0 3px rgba(147,197,253,.35)}
+    button{border:1px solid var(--line); background:#fff; border-radius:12px; padding:10px 12px; font-size:13px; cursor:pointer}
+    button.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+    button.ghost{background:#fff}
+    button:disabled{opacity:.45; cursor:not-allowed}
+
+    main{display:grid; grid-template-columns: 1.25fr .9fr; gap:14px; padding:14px; max-width:1400px; margin:0 auto}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .card h2{margin:0; padding:14px 14px 0 14px; font-size:14px}
+    .card .hint{padding:6px 14px 12px 14px; color:var(--muted); font-size:12px}
+    .card .body{padding:14px}
+
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .spacer{flex:1}
+
+    table{width:100%; border-collapse:separate; border-spacing:0; font-size:12px}
+    thead th{
+      text-align:left; color:var(--muted); font-weight:700; padding:10px 8px; border-bottom:1px solid var(--line);
+      position:sticky; top:0; background:var(--card); z-index:1;
+    }
+    tbody td{padding:10px 8px; border-bottom:1px solid #f1f5f9; vertical-align:middle}
+    tbody tr:hover{background:#f8fafc}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .badge{display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; border:1px solid var(--line); font-weight:700}
+    .dot{width:8px; height:8px; border-radius:999px; background:var(--muted)}
+    .b-pass .dot{background:var(--good)} .b-warn .dot{background:var(--warn)} .b-fail .dot{background:var(--bad)}
+    .stage{font-weight:800; font-size:11px; padding:4px 10px; border-radius:999px; background:#f1f5f9; border:1px solid #e2e8f0}
+    .btnxs{padding:6px 8px; border-radius:10px; font-size:12px}
+    .btnxs.blue{background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8}
+    .btnxs.red{background:#fef2f2; border-color:#fecaca; color:#b91c1c}
+    .btnxs.green{background:#ecfdf5; border-color:#bbf7d0; color:#166534}
+
+    .detailTop{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .kpi{display:flex; gap:8px; align-items:center}
+    .kpi .box{border:1px solid var(--line); background:#fff; border-radius:14px; padding:10px 12px; min-width:110px}
+    .kpi .box .t{font-size:11px; color:var(--muted)}
+    .kpi .box .v{font-size:18px; font-weight:900; margin-top:4px}
+
+    details{border:1px solid var(--line); border-radius:14px; background:#fff; padding:10px 12px}
+    details summary{cursor:pointer; font-weight:800}
+    pre{white-space:pre-wrap; word-break:break-word; margin:10px 0 0 0; font-size:12px; background:#0b1020; color:#e5e7eb; padding:12px; border-radius:14px; overflow:auto}
+
+    .bulkbar{
+      margin-top:10px;
+      border:1px dashed #cbd5e1;
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fbfdff;
+      display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+    }
+    .bulkbar .count{font-weight:900}
+    .resultsPanel{
+      margin-top:10px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      padding:10px 12px;
+      max-height:220px;
+      overflow:auto;
+      font-size:12px;
+    }
+    .resItem{display:flex; gap:8px; align-items:center; padding:6px 0; border-bottom:1px solid #f1f5f9}
+    .resItem:last-child{border-bottom:none}
+    .pill{padding:3px 8px; border-radius:999px; border:1px solid var(--line); font-weight:800; font-size:11px}
+    .pill.ok{border-color:#bbf7d0; background:#ecfdf5; color:#166534}
+    .pill.err{border-color:#fecaca; background:#fef2f2; color:#b91c1c}
+    .pill.neu{border-color:#e5e7eb; background:#f8fafc; color:#111827}
+
+    /* CTR box */
+    .ctrBox{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      padding:10px 12px;
+      margin-top:10px;
+    }
+    .ctrGrid{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      margin-top:8px;
+      font-size:12px;
+    }
+    .ctrGrid th{color:var(--muted); font-weight:800; text-align:left; padding:8px 6px; border-bottom:1px solid #eef2f7}
+    .ctrGrid td{padding:8px 6px; border-bottom:1px solid #f1f5f9}
+
+    /* ✅ Embedded preview/compare panel (no popups) */
+    .embedBox{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      padding:10px 12px;
+      margin-top:10px;
+      overflow:hidden;
+    }
+    .embedTop{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      padding-bottom:8px; border-bottom:1px solid #eef2f7;
+    }
+    .embedTop .ttl{font-weight:900}
+    .embedTop .meta{color:var(--muted); font-size:12px}
+    .embedTop .mini{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:5px 10px;
+      font-size:12px;
+      background:#f8fafc;
+      font-weight:800;
+    }
+    .embedFrameWrap{
+      margin-top:10px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+      height:420px;
+    }
+    .embedFrame{width:100%; height:100%; border:0; background:#fff;}
+
+    .cmpGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .cmpPane{
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+      height:420px;
+      display:flex;
+      flex-direction:column;
+    }
+    .cmpHead{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:8px 10px;
+      border-bottom:1px solid #eef2f7;
+      background:#fbfdff;
+    }
+    .cmpHead .t{font-weight:900}
+    .cmpHead a{font-size:12px; color:#2563eb; text-decoration:none}
+    .cmpIframe{flex:1; width:100%; border:0; background:#fff;}
+
+    /* ✅ Status summary line (portfolio-friendly) */
+    .statusLine{
+      margin-top:10px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fbfdff;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .statusLine .label{font-weight:900}
+    .statusLine .sep{color:#cbd5e1}
+    .statusLine .next{
+      margin-left:auto;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .statusPill{
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:900;
+      font-size:12px;
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+    }
+    .statusPill.good{border-color:#bbf7d0; background:#ecfdf5; color:#166534}
+    .statusPill.warn{border-color:#fde68a; background:#fffbeb; color:#92400e}
+    .statusPill.bad{border-color:#fecaca; background:#fef2f2; color:#991b1b}
+    .statusPill.neu{background:#fff}
+    .statusBtn{
+      padding:6px 10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .statusBtn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+    .statusBtn.red{background:#ef4444; border-color:#ef4444; color:#fff}
+
+    @media (max-width: 980px){
+      main{grid-template-columns:1fr}
+      .cmpGrid{grid-template-columns:1fr}
+      .cmpPane,.embedFrameWrap{height:65vh}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>SEO Landing Ops Tool · Admin</h1>
+        <div class="sub">Runs / Audit / Fix / Export</div>
+      </div>
+    </div>
+
+    <div class="chip">
+      <span class="mono">Token</span>
+      <input id="tok" placeholder="(optional) X-Admin-Token 저장" style="width:260px"/>
+      <button id="saveTok">Save</button>
+    </div>
+
+    <div class="chip">
+      <input id="q" placeholder="Search   primary / title ... (Enter)" style="width:280px"/>
+      <button id="btnSearch" class="primary">Search</button>
+    </div>
+
+    <select id="auditFilter">
+      <option value="">Audit  ALL</option>
+      <option value="PASS">PASS</option>
+      <option value="WARN">WARN</option>
+      <option value="FAIL">FAIL</option>
+    </select>
+
+    <select id="stageFilter">
+      <option value="">Stage  ALL</option>
+      <option value="DRAFT">DRAFT</option>
+      <option value="AB_READY">AB_READY</option>
+      <option value="APPROVED">APPROVED</option>
+      <option value="AUDIT_DONE">AUDIT_DONE</option>
+      <option value="FIXED">FIXED</option>
+      <option value="EXPORTED">EXPORTED</option>
+    </select>
+
+    <select id="sort">
+      <option value="updated_desc">Sort  Updated ↓</option>
+      <option value="score_desc">Sort  Score ↓</option>
+      <option value="run_id_desc">Sort  Run ID ↓</option>
+    </select>
+
+    <button id="btnRefresh">Refresh</button>
+    <div class="spacer"></div>
+    <div class="mono" id="health"></div>
+  </div>
+</header>
+
+<main>
+  <!-- LEFT: Runs -->
+  <section class="card">
+    <h2>Runs</h2>
+    <div class="hint">
+      run_id 클릭 = 우측 상세 로드 · 체크박스 = Bulk · Tip: Export는 PASS일 때만 성공
+      <div class="bulkbar">
+        <span class="count">Selected: <span id="selCount">0</span></span>
+        <button id="bulkClear" class="ghost btnxs">Clear</button>
+        <span class="mono">max_rounds</span>
+        <input id="bulkRounds" type="number" min="1" max="6" value="2" style="width:80px; padding:8px 10px; border-radius:12px"/>
+        <button id="bulkAudit" class="btnxs">Bulk Audit</button>
+        <button id="bulkFix" class="btnxs red">Bulk Fix</button>
+        <button id="bulkAuto" class="btnxs blue">Bulk Auto PASS + Export</button>
+        <button id="bulkExport" class="btnxs green">Bulk Export (PASS only)</button>
+      </div>
+      <div class="resultsPanel" id="bulkResults" style="display:none"></div>
+    </div>
+
+    <div class="body" style="padding-top:0">
+      <div class="row" style="margin-bottom:10px">
+        <button id="prev" class="btnxs">Prev</button>
+        <button id="next" class="btnxs">Next</button>
+        <span class="mono">offset</span>
+        <span id="offset" class="mono">0</span>
+        <span class="spacer"></span>
+        <span class="mono" id="countInfo"></span>
+        <span class="mono" id="dbInfo"></span>
+      </div>
+
+      <div style="max-height:650px; overflow:auto; border:1px solid var(--line); border-radius:14px">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:36px"><input id="chkAll" type="checkbox"/></th>
+              <th style="width:64px">run_id</th>
+              <th>primary</th>
+              <th style="width:90px">intent</th>
+              <th style="width:160px">updated_at</th>
+              <th style="width:100px">audit</th>
+              <th style="width:70px">score</th>
+              <th style="width:110px">stage</th>
+              <th style="width:70px">export</th>
+              <th style="width:360px">actions</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: Run Detail -->
+  <section class="card">
+    <h2>Run Detail</h2>
+    <div class="hint">selected run_id: <span id="selId" class="mono">-</span></div>
+
+    <div class="body">
+     <div class="detailTop">
+       <div class="badge" id="bdAudit"><span class="dot"></span><span>AUDIT: -</span></div>
+       <div class="badge" id="bdStage"><span class="dot"></span><span>STAGE: -</span></div>
+       <div class="badge" id="bdApproved"><span class="dot"></span><span>APPROVED: -</span></div>
+       <div class="badge" id="bdScore"><span class="dot"></span><span>SCORE: -</span></div>
+       <div class="badge" id="bdFixed"><span class="dot"></span><span>FIXED: -</span></div>
+       <div class="badge" id="bdExport"><span class="dot"></span><span>EXPORTED: -</span></div>
+
+       <div class="spacer"></div>
+
+       <!-- Preview buttons (no popup: embedded) -->
+       <button id="btnPrevFinal" class="btnxs" disabled>Preview Final</button>
+       <button id="btnPrevA" class="btnxs" disabled>Preview A</button>
+       <button id="btnPrevB" class="btnxs" disabled>Preview B</button>
+       <button id="btnCompareAB" class="btnxs blue" disabled>Compare A/B</button>
+       <button id="btnPrevRec" class="btnxs blue" disabled>Preview Recommended</button>
+
+       <!-- ops -->
+       <button id="btnAudit" class="btnxs" disabled>Audit</button>
+       <button id="btnFix" class="btnxs red" disabled>Fix to PASS</button>
+       <button id="btnExport" class="btnxs green" disabled>Export (PASS only)</button>
+       <button id="btnAuto" class="btnxs blue" disabled>Auto PASS + Export</button>
+     </div>
+
+      <!-- ✅ NEW: 상태 요약 + Next Action -->
+      <div class="statusLine" id="statusLine" style="display:none">
+        <span class="label">Status</span>
+        <span class="sep">·</span>
+        <span class="mono" id="stRun">#-</span>
+
+        <span class="statusPill neu" id="stAudit">AUDIT: -</span>
+        <span class="statusPill neu" id="stStage">STAGE: -</span>
+        <span class="statusPill neu" id="stApproved">APPROVED: -</span>
+        <span class="statusPill neu" id="stExported">EXPORT: -</span>
+
+        <div class="next">
+          <span class="mono" style="color:var(--muted); font-size:12px">Next</span>
+          <span class="statusPill neu" id="stNext">-</span>
+          <button class="statusBtn" id="stNextBtn" style="display:none">Do</button>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:10px">
+        <button id="btnApproveA" class="btnxs" disabled>Approve A</button>
+        <button id="btnApproveB" class="btnxs" disabled>Approve B</button>
+        <button id="btnApproveRec" class="btnxs" disabled>Approve Recommended</button>
+        <span class="spacer"></span>
+        <span class="mono" style="color:var(--muted); font-size:12px">
+          * Approve는 /r/{id} 최종 스냅샷에 반영됨
+        </span>
+      </div>
+
+      <!-- ✅ CTR Summary Panel -->
+      <div class="ctrBox">
+        <div class="row">
+          <div class="mono" style="font-weight:900">CTR Summary</div>
+          <span class="spacer"></span>
+          <span class="pill neu" id="ctrRecPill">REC: -</span>
+          <button id="btnCtrRefresh" class="btnxs">Refresh CTR</button>
+        </div>
+        <div class="row" style="margin-top:6px">
+          <span class="mono" id="ctrMeta" style="color:var(--muted)"></span>
+        </div>
+
+        <table class="ctrGrid">
+          <thead>
+            <tr>
+              <th style="width:80px">variant</th>
+              <th style="width:90px">views</th>
+              <th style="width:90px">clicks</th>
+              <th style="width:120px">ctr</th>
+            </tr>
+          </thead>
+          <tbody id="ctrBody">
+            <tr><td class="mono">-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kpi" style="margin-top:10px">
+        <div class="box">
+          <div class="t">Primary</div>
+          <div class="v" id="kPrimary" style="font-size:14px">-</div>
+        </div>
+        <div class="box">
+          <div class="t">Title Len</div>
+          <div class="v" id="kTitle">-</div>
+        </div>
+        <div class="box">
+          <div class="t">Desc Len</div>
+          <div class="v" id="kDesc">-</div>
+        </div>
+        <div class="box">
+          <div class="t">Word Count</div>
+          <div class="v" id="kWords">-</div>
+        </div>
+      </div>
+
+      <!-- ✅ Embedded Preview (single) -->
+      <div class="embedBox" id="previewBox" style="display:none">
+        <div class="embedTop">
+          <div class="ttl">Embedded Preview</div>
+          <span class="mini" id="pvRun">#-</span>
+          <span class="mini" id="pvVar">variant: -</span>
+          <span class="spacer"></span>
+          <a id="pvOpenLink" href="#" target="_blank" rel="noopener" style="font-size:12px; color:#2563eb; text-decoration:none">Open in new tab</a>
+          <button class="btnxs" id="pvReload">Reload</button>
+          <button class="btnxs" id="pvClose">Close</button>
+        </div>
+        <div class="embedFrameWrap">
+          <iframe class="embedFrame" id="pvIframe" src="about:blank"></iframe>
+        </div>
+      </div>
+
+      <!-- ✅ Embedded Compare (A/B 2-up) -->
+      <div class="embedBox" id="compareBox" style="display:none">
+        <div class="embedTop">
+          <div class="ttl">A/B Compare</div>
+          <span class="mini" id="cpRun">#-</span>
+          <span class="mini" id="cpVars">A vs B</span>
+          <span class="spacer"></span>
+
+          <span class="mono" style="color:var(--muted); font-size:12px">Left</span>
+          <select id="cpLeft" style="padding:7px 10px; border-radius:12px">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="">FINAL</option>
+          </select>
+
+          <span class="mono" style="color:var(--muted); font-size:12px">Right</span>
+          <select id="cpRight" style="padding:7px 10px; border-radius:12px">
+            <option value="B">B</option>
+            <option value="A">A</option>
+            <option value="">FINAL</option>
+          </select>
+
+          <button class="btnxs" id="cpSwap">Swap</button>
+          <button class="btnxs" id="cpReload">Reload</button>
+          <button class="btnxs" id="cpClose">Close</button>
+        </div>
+
+        <div class="cmpGrid">
+          <section class="cmpPane">
+            <div class="cmpHead">
+              <div class="t" id="cpLeftTitle">A</div>
+              <a id="cpLeftLink" href="#" target="_blank" rel="noopener">Open tab</a>
+            </div>
+            <iframe class="cmpIframe" id="cpLeftIframe" src="about:blank"></iframe>
+          </section>
+
+          <section class="cmpPane">
+            <div class="cmpHead">
+              <div class="t" id="cpRightTitle">B</div>
+              <a id="cpRightLink" href="#" target="_blank" rel="noopener">Open tab</a>
+            </div>
+            <iframe class="cmpIframe" id="cpRightIframe" src="about:blank"></iframe>
+          </section>
+        </div>
+      </div>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>Audit Issues</summary>
+        <pre id="auditIssues">-</pre>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>Last FIX/AUTO Response</summary>
+        <pre id="lastFixAuto">-</pre>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <details>
+        <summary>Job Logs</summary>
+        <pre id="jobLogs">-</pre>
+      </details>
+
+      <div style="height:10px"></div>
+
+      <div class="row">
+        <button id="openExport" class="btnxs" disabled>Open export</button>
+        <button id="downloadFile" class="btnxs" disabled>Download file</button>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  const state = {
+    token: localStorage.getItem("admin_token") || "",
+    offset: 0,
+    limit: 16,
+    selectedRunId: null,
+    selectedSet: new Set(),
+    ctr: { recommended: null, summary: null },
+    embed: {
+      previewOpen: false,
+      compareOpen: false,
+      previewVariant: "",
+      leftVar: "A",
+      rightVar: "B",
+    }
+  };
+
+  function headers(){
+    const h = {"Content-Type":"application/json"};
+    if(state.token) h["X-Admin-Token"] = state.token;
+    return h;
+  }
+
+  function badge(el, kind, text){
+    if(!el) return;
+    el.className = "badge " + (kind||"");
+    el.innerHTML = `<span class="dot"></span><span>${text}</span>`;
+  }
+  function auditKind(overall){
+    if(overall==="PASS") return "b-pass";
+    if(overall==="WARN") return "b-warn";
+    if(overall==="FAIL") return "b-fail";
+    return "";
+  }
+
+  function buildPublicPreviewUrl(runId, variant){
+    const base = `${location.origin}/r/${runId}`;
+    if(variant === null || variant === undefined) return base;
+    const v = String(variant);
+    if(v === "") return base;           // FINAL
+    return `${base}?variant=${encodeURIComponent(v)}`;
+  }
+
+  // ✅ No popup: embedded preview
+  function openEmbeddedPreview(variant){
+    const rid = state.selectedRunId;
+    if(!rid){
+      alert("먼저 Run을 선택해줘");
+      return;
+    }
+    state.embed.previewOpen = true;
+    state.embed.compareOpen = false;
+    state.embed.previewVariant = (variant === null || variant === undefined) ? "" : String(variant);
+
+    $("compareBox").style.display = "none";
+    $("previewBox").style.display = "block";
+
+    const url = buildPublicPreviewUrl(rid, state.embed.previewVariant);
+    $("pvRun").textContent = `#${rid}`;
+    $("pvVar").textContent = `variant: ${state.embed.previewVariant === "" ? "FINAL" : state.embed.previewVariant}`;
+    $("pvOpenLink").href = url;
+    $("pvIframe").src = url;
+  }
+
+  function closeEmbeddedPreview(){
+    state.embed.previewOpen = false;
+    $("previewBox").style.display = "none";
+    $("pvIframe").src = "about:blank";
+  }
+
+  function reloadEmbeddedPreview(){
+    const rid = state.selectedRunId;
+    if(!rid) return;
+    const url = buildPublicPreviewUrl(rid, state.embed.previewVariant);
+    $("pvIframe").src = url + (url.includes("?") ? "&" : "?") + "_ts=" + Date.now();
+  }
+
+  // ✅ No popup: embedded compare (2-up)
+  function openEmbeddedCompare(leftVar="A", rightVar="B"){
+    const rid = state.selectedRunId;
+    if(!rid){
+      alert("먼저 Run을 선택해줘");
+      return;
+    }
+    state.embed.compareOpen = true;
+    state.embed.previewOpen = false;
+
+    state.embed.leftVar = (leftVar === null || leftVar === undefined) ? "A" : String(leftVar);
+    state.embed.rightVar = (rightVar === null || rightVar === undefined) ? "B" : String(rightVar);
+
+    $("previewBox").style.display = "none";
+    $("compareBox").style.display = "block";
+
+    $("cpRun").textContent = `#${rid}`;
+    $("cpLeft").value = state.embed.leftVar;
+    $("cpRight").value = state.embed.rightVar;
+
+    updateEmbeddedCompare();
+  }
+
+  function updateEmbeddedCompare(){
+    const rid = state.selectedRunId;
+    if(!rid) return;
+
+    const lv = $("cpLeft").value;
+    const rv = $("cpRight").value;
+
+    state.embed.leftVar = lv;
+    state.embed.rightVar = rv;
+
+    const leftUrl  = buildPublicPreviewUrl(rid, lv);
+    const rightUrl = buildPublicPreviewUrl(rid, rv);
+
+    $("cpVars").textContent = `${lv === "" ? "FINAL" : lv} vs ${rv === "" ? "FINAL" : rv}`;
+
+    $("cpLeftTitle").textContent = lv === "" ? "FINAL" : lv;
+    $("cpRightTitle").textContent = rv === "" ? "FINAL" : rv;
+
+    $("cpLeftLink").href = leftUrl;
+    $("cpRightLink").href = rightUrl;
+
+    $("cpLeftIframe").src = leftUrl;
+    $("cpRightIframe").src = rightUrl;
+  }
+
+  function closeEmbeddedCompare(){
+    state.embed.compareOpen = false;
+    $("compareBox").style.display = "none";
+    $("cpLeftIframe").src = "about:blank";
+    $("cpRightIframe").src = "about:blank";
+  }
+
+  function reloadEmbeddedCompare(){
+    const rid = state.selectedRunId;
+    if(!rid) return;
+
+    const lv = $("cpLeft").value;
+    const rv = $("cpRight").value;
+
+    const leftUrl  = buildPublicPreviewUrl(rid, lv);
+    const rightUrl = buildPublicPreviewUrl(rid, rv);
+
+    $("cpLeftIframe").src = leftUrl + (leftUrl.includes("?") ? "&" : "?") + "_ts=" + Date.now();
+    $("cpRightIframe").src = rightUrl + (rightUrl.includes("?") ? "&" : "?") + "_ts=" + Date.now();
+  }
+
+  function hasVariant(run, v){
+    try{
+      const vars = run?.optimize?.variants;
+      if(!vars) return false;
+
+      const key = String(v || "").trim().toUpperCase();
+
+      if(!Array.isArray(vars) && typeof vars === "object"){
+        return Object.prototype.hasOwnProperty.call(vars, key);
+      }
+      if(Array.isArray(vars)){
+        return vars.some(it => {
+          const id = String(it?.id || it?.variant || it?.name || "").trim().toUpperCase();
+          return id === key;
+        });
+      }
+      return false;
+    }catch(e){
+      return false;
+    }
+  }
+
+  function updateSelCount(){
+    $("selCount").textContent = String(state.selectedSet.size);
+    $("chkAll").checked = false;
+  }
+
+  function renderBulkResults(panel, payload){
+    panel.style.display = "block";
+    const lines = [];
+    lines.push(`<div class="resItem"><span class="pill ok">DONE</span><span class="mono">action=${payload.action}</span><span class="mono">ok=${payload.ok_count}</span><span class="mono">err=${payload.err_count}</span><span class="mono">elapsed_ms=${payload.elapsed_ms}</span></div>`);
+    for(const r of payload.results){
+      if(r.ok){
+        lines.push(`<div class="resItem"><span class="pill ok">OK</span><span class="mono">#${r.run_id}</span><span class="mono">${r.audit_overall||"-"}</span><span class="mono">score=${r.score ?? "-"}</span><span class="mono">stage=${r.stage||"-"}</span></div>`);
+      }else{
+        lines.push(`<div class="resItem"><span class="pill err">ERR</span><span class="mono">#${r.run_id}</span><span>${(r.error||"").toString()}</span></div>`);
+      }
+    }
+    panel.innerHTML = lines.join("");
+  }
+
+  async function apiHealth(){
+    const r = await fetch("/api/admin/health", {headers: headers()});
+    const j = await r.json();
+    if(j.ok){
+      $("health").textContent = "● connected";
+      $("dbInfo").textContent = "db: " + j.db_path;
+    }else{
+      $("health").textContent = "● offline";
+      $("dbInfo").textContent = "";
+    }
+  }
+
+  function getFilters(){
+    return {
+      q: $("q").value.trim(),
+      stage: $("stageFilter").value.trim(),
+      audit_overall: $("auditFilter").value.trim(),
+      sort: $("sort").value.trim()
+    };
+  }
+
+  function pickAuditOverall(it){
+    return (it?.audit_overall) || (it?.audit?.overall) || "-";
+  }
+  function pickAuditScore(it){
+    const v = (it?.audit_score ?? it?.audit?.score ?? it?.score);
+    return (v === null || v === undefined) ? "-" : v;
+  }
+  function pickExported(it){
+    return !!(it?.exported ?? it?.export);
+  }
+
+  // ✅ NEW: status summary renderer
+  function setStatusPill(el, kind, text){
+    el.className = "statusPill " + (kind || "neu");
+    el.textContent = text;
+  }
+
+  function kindFromAudit(overall){
+    if(overall === "PASS") return "good";
+    if(overall === "WARN") return "warn";
+    if(overall === "FAIL") return "bad";
+    return "neu";
+  }
+
+  function renderStatusLine(run_id, run){
+    $("statusLine").style.display = "flex";
+    $("stRun").textContent = `#${run_id}`;
+
+    const audit = run?.audit || {};
+    const overall = (audit.overall || "-").toString().toUpperCase();
+    const stage = (run?.stage || "-").toString();
+
+    const approved = run?.approved?.variant ? String(run.approved.variant) : "-";
+    const hasExport = !!run?.export?.ts;
+
+    setStatusPill($("stAudit"), kindFromAudit(overall), `AUDIT: ${overall}`);
+    setStatusPill($("stStage"), "neu", `STAGE: ${stage}`);
+    setStatusPill($("stApproved"), "neu", `APPROVED: ${approved}`);
+    setStatusPill($("stExported"), hasExport ? "good" : "neu", `EXPORT: ${hasExport ? "YES" : "-"}`);
+
+    // Next Action 결정
+    let nextText = "-";
+    let btnText = "";
+    let btnKind = "primary";
+    let btnShow = false;
+    let btnHandler = null;
+
+    if(overall !== "PASS"){
+      nextText = (overall === "FAIL") ? "Fix to PASS" : "Run Audit / Fix";
+      btnText = (overall === "FAIL") ? "Fix" : "Audit";
+      btnKind = (overall === "FAIL") ? "red" : "primary";
+      btnShow = true;
+      btnHandler = async () => {
+        if(overall === "FAIL") await doFix(run_id);
+        else await doAudit(run_id);
+      };
+    } else if(!hasExport){
+      nextText = "Export HTML";
+      btnText = "Export";
+      btnKind = "primary";
+      btnShow = true;
+      btnHandler = async () => await doExport(run_id);
+    } else {
+      nextText = "Done (Exported)";
+      btnShow = false;
+      btnHandler = null;
+    }
+
+    setStatusPill($("stNext"), btnShow ? "neu" : "good", nextText);
+
+    const b = $("stNextBtn");
+    if(btnShow){
+      b.style.display = "inline-block";
+      b.textContent = btnText;
+      b.className = "statusBtn " + (btnKind === "red" ? "red" : "primary");
+      b.onclick = btnHandler;
+    }else{
+      b.style.display = "none";
+      b.onclick = null;
+    }
+  }
+
+  async function loadRuns(){
+    const f = getFilters();
+    const qs = new URLSearchParams({
+      limit: String(state.limit),
+      offset: String(state.offset),
+      q: f.q,
+      stage: f.stage,
+      audit_overall: f.audit_overall,
+      sort: f.sort
+    });
+    const r = await fetch("/api/admin/runs_v2?" + qs.toString(), {headers: headers()});
+    const j = await r.json();
+    if(!j.ok){
+      alert("load runs failed: " + (j.error||""));
+      return;
+    }
+
+    $("offset").textContent = String(state.offset);
+    const total = (j.count ?? j.total ?? 0);
+    $("countInfo").textContent = `count: ${total}`;
+
+    const tb = $("tbody");
+    tb.innerHTML = "";
+
+    for(const it of j.items){
+      const rid = it.run_id;
+      const overall = pickAuditOverall(it);
+      const score = pickAuditScore(it);
+      const stage = it.stage || "-";
+      const exp = pickExported(it) ? "YES" : "-";
+      const updated = it.updated_at || "-";
+      const primary = it.primary_keyword || "-";
+      const intent = it.intent || "-";
+
+      const tr = document.createElement("tr");
+      const isChecked = state.selectedSet.has(rid);
+
+      tr.innerHTML = `
+        <td><input class="chk" type="checkbox" data-id="${rid}" ${isChecked?"checked":""}/></td>
+        <td class="mono"><button class="btnxs" data-act="select" data-id="${rid}">${rid}</button></td>
+        <td>${primary}</td>
+        <td>${intent}</td>
+        <td class="mono">${updated}</td>
+        <td><span class="badge ${auditKind(overall)}"><span class="dot"></span><span>${overall}</span></span></td>
+        <td class="mono">${score}</td>
+        <td><span class="stage">${stage}</span></td>
+        <td class="mono">${exp}</td>
+        <td>
+          <button class="btnxs" data-act="prev_final" data-id="${rid}">Final</button>
+          <button class="btnxs blue" data-act="prev_a" data-id="${rid}">A</button>
+          <button class="btnxs blue" data-act="prev_b" data-id="${rid}">B</button>
+          <button class="btnxs blue" data-act="cmp" data-id="${rid}">Compare</button>
+          <button class="btnxs" data-act="audit" data-id="${rid}">Audit</button>
+          <button class="btnxs red" data-act="fix" data-id="${rid}">Fix</button>
+          <button class="btnxs blue" data-act="auto" data-id="${rid}">Auto</button>
+          <button class="btnxs green" data-act="export" data-id="${rid}">Export</button>
+          <button class="btnxs" data-act="open" data-id="${rid}">Open</button>
+        </td>
+      `;
+
+      tr.addEventListener("click", async (e) => {
+        const a = e.target?.dataset?.act;
+        const id = Number(e.target?.dataset?.id || 0);
+        if(!id) return;
+
+        if(a === "select"){ await selectRun(id); return; }
+
+        // ✅ embedded preview/compare (no popups)
+        if(a === "prev_final"){ await selectRun(id); openEmbeddedPreview(""); return; }
+        if(a === "prev_a"){ await selectRun(id); openEmbeddedPreview("A"); return; }
+        if(a === "prev_b"){ await selectRun(id); openEmbeddedPreview("B"); return; }
+        if(a === "cmp"){ await selectRun(id); openEmbeddedCompare("A","B"); return; }
+
+        if(a === "open"){ await selectRun(id); return; }
+        if(a === "audit"){ await selectRun(id); await doAudit(id); return; }
+        if(a === "fix"){ await selectRun(id); await doFix(id); return; }
+        if(a === "auto"){ await selectRun(id); await doAuto(id); return; }
+        if(a === "export"){ await selectRun(id); await doExport(id); return; }
+
+        if(e.target.classList.contains("chk")) return;
+      });
+
+      tb.appendChild(tr);
+    }
+
+    document.querySelectorAll(".chk").forEach(chk=>{
+      chk.addEventListener("change", (e)=>{
+        const rid = Number(e.target.dataset.id);
+        if(e.target.checked) state.selectedSet.add(rid);
+        else state.selectedSet.delete(rid);
+        updateSelCount();
+      });
+    });
+
+    updateSelCount();
+  }
+
+  function renderCtr(summary){
+    const tbody = $("ctrBody");
+    const vars = summary?.variants || {};
+    const keys = Object.keys(vars);
+    if(keys.length === 0){
+      tbody.innerHTML = `<tr><td class="mono">-</td><td>-</td><td>-</td><td>-</td></tr>`;
+      $("ctrMeta").textContent = "no events yet";
+      $("ctrRecPill").textContent = "REC: -";
+      $("ctrRecPill").className = "pill neu";
+      state.ctr.recommended = null;
+      $("btnPrevRec").disabled = true;
+      $("btnPrevRec").onclick = null;
+      return;
+    }
+
+    keys.sort();
+    const rows = [];
+    for(const k of keys){
+      const v = vars[k] || {};
+      const ctr = (typeof v.ctr === "number") ? (v.ctr * 100).toFixed(2) + "%" : "-";
+      rows.push(`
+        <tr>
+          <td class="mono">${k}</td>
+          <td class="mono">${v.views ?? "-"}</td>
+          <td class="mono">${v.clicks ?? "-"}</td>
+          <td class="mono">${ctr}</td>
+        </tr>
+      `);
+    }
+    tbody.innerHTML = rows.join("");
+
+    const rec = summary.recommended || null;
+    state.ctr.recommended = rec;
+
+    $("ctrMeta").textContent = `reason=${summary.reason || "-"} · ts=${summary.ts || "-"} · src=${summary.source_table || "-"}`;
+
+    if(rec){
+      $("ctrRecPill").textContent = `REC: ${rec}`;
+      $("ctrRecPill").className = "pill ok";
+      $("btnPrevRec").disabled = false;
+      $("btnPrevRec").onclick = ()=> openEmbeddedPreview(rec);
+    }else{
+      $("ctrRecPill").textContent = "REC: -";
+      $("ctrRecPill").className = "pill neu";
+      $("btnPrevRec").disabled = true;
+      $("btnPrevRec").onclick = null;
+    }
+  }
+
+  async function loadCtr(run_id){
+    const r = await fetch(`/api/admin/ctr_summary?run_id=${run_id}`, {headers: headers()});
+    let j = null;
+    try{ j = await r.json(); }catch(e){}
+
+    if(!j || !j.ok){
+      $("ctrMeta").textContent = j?.error ? `ctr_summary error: ${j.error}` : "ctr_summary not available (add /api/admin/ctr_summary)";
+      $("ctrBody").innerHTML = `<tr><td class="mono">-</td><td>-</td><td>-</td><td>-</td></tr>`;
+      $("ctrRecPill").textContent = "REC: -";
+      $("ctrRecPill").className = "pill neu";
+      $("btnPrevRec").disabled = true;
+      $("btnPrevRec").onclick = null;
+      state.ctr.recommended = null;
+      return;
+    }
+
+    renderCtr(j.summary || {});
+  }
+
+  async function selectRun(run_id){
+    state.selectedRunId = run_id;
+    $("selId").textContent = String(run_id);
+
+    const r = await fetch(`/api/admin/run/${run_id}`, {headers: headers()});
+    const j = await r.json();
+    if(!j.ok){
+      alert("load run failed: " + (j.error||""));
+      return;
+    }
+    const run = j.run || {};
+    const audit = run.audit || {};
+    const overall = audit.overall || "-";
+    const stage = run.stage || "-";
+    const score = audit.score ?? "-";
+
+    badge($("bdAudit"), auditKind(overall), `AUDIT: ${overall}`);
+    badge($("bdStage"), "", `STAGE: ${stage}`);
+    badge($("bdScore"), "", `SCORE: ${score}`);
+
+    const ap = run.approved || null;
+    if(ap && ap.variant){
+      const m = ap.method ? ` (${ap.method})` : "";
+      const ts = ap.ts ? ` @ ${ap.ts}` : "";
+      badge($("bdApproved"), "", `APPROVED: ${ap.variant}${m}${ts}`);
+    }else{
+      badge($("bdApproved"), "", `APPROVED: -`);
+    }
+
+    const isFixed = !!run.fixed;
+    badge($("bdFixed"), isFixed ? "b-pass" : "", `FIXED: ${isFixed ? "YES" : "-"}`);
+
+    const ex = run.export || null;
+    if(ex && ex.ts){
+      let shortPath = "";
+      if(ex.path){
+        const parts = String(ex.path).split(/[/\\]/).filter(Boolean);
+        shortPath = parts.length >= 2 ? parts.slice(-2).join("/") : parts.join("/");
+      }
+      const p = shortPath ? ` · ${shortPath}` : "";
+      badge($("bdExport"), "b-pass", `EXPORTED: ${ex.ts}${p}`);
+    }else{
+      badge($("bdExport"), "", `EXPORTED: -`);
+    }
+
+    // ✅ NEW: status summary line render
+    renderStatusLine(run_id, run);
+
+    // KPI
+    const primary = run.primary_keyword || "-";
+    $("kPrimary").textContent = primary;
+
+    const title = (run.fixed && run.fixed.meta_title) ? run.fixed.meta_title : (run.meta_title||"");
+    const desc  = (run.fixed && run.fixed.meta_description) ? run.fixed.meta_description : (run.meta_description||"");
+    $("kTitle").textContent = title ? String(title.length) : "-";
+    $("kDesc").textContent = desc ? String(desc.length) : "-";
+
+    const body = (run.fixed && run.fixed.body_html) ? run.fixed.body_html : ((run.body_html||run.landing_text||"") + "");
+    const plain = body.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+    $("kWords").textContent = plain ? String(plain.split(" ").length) : "-";
+
+    $("auditIssues").textContent = JSON.stringify((audit.issues||[]), null, 2);
+
+    // enable ops buttons
+    $("btnAudit").disabled = false;
+    $("btnFix").disabled = false;
+    $("btnAuto").disabled = false;
+
+    const canExport = (audit && audit.overall === "PASS");
+    $("btnExport").disabled = !canExport;
+
+    // variants availability
+    const okA = hasVariant(run, "A");
+    const okB = hasVariant(run, "B");
+
+    // preview buttons => embedded
+    $("btnPrevFinal").disabled = false;
+    $("btnPrevFinal").onclick = ()=> openEmbeddedPreview("");
+
+    $("btnPrevA").disabled = !okA;
+    $("btnPrevB").disabled = !okB;
+    $("btnPrevA").onclick = okA ? (()=> openEmbeddedPreview("A")) : null;
+    $("btnPrevB").onclick = okB ? (()=> openEmbeddedPreview("B")) : null;
+
+    $("btnCompareAB").disabled = !(okA && okB);
+    $("btnCompareAB").onclick = (okA && okB) ? (()=> openEmbeddedCompare("A", "B")) : null;
+
+    // approve buttons
+    $("btnApproveA").disabled = !okA;
+    $("btnApproveB").disabled = !okB;
+    $("btnApproveRec").disabled = !(okA && okB);
+
+    $("btnApproveA").onclick = okA ? (() => doApprove(run_id, "A")) : null;
+    $("btnApproveB").onclick = okB ? (() => doApprove(run_id, "B")) : null;
+    $("btnApproveRec").onclick = (okA && okB) ? (() => doApprove(run_id, "RECOMMENDED")) : null;
+
+    // export open/download
+    const hasExport = !!run.export;
+    $("openExport").disabled = !hasExport;
+    $("downloadFile").disabled = !hasExport;
+    $("openExport").onclick = ()=> { window.location.href = `/api/export/open?run_id=${run_id}`; };
+    $("downloadFile").onclick = ()=> { window.location.href = `/api/export/file?run_id=${run_id}`; };
+
+    // CTR summary load + refresh wiring
+    await loadCtr(run_id);
+    $("btnCtrRefresh").onclick = ()=> loadCtr(run_id);
+
+    // logs
+    await loadLogs(run_id);
+
+    // if compare/preview already open, keep it in sync
+    if(state.embed.previewOpen){
+      openEmbeddedPreview(state.embed.previewVariant);
+    }
+    if(state.embed.compareOpen){
+      openEmbeddedCompare(state.embed.leftVar, state.embed.rightVar);
+    }
+  }
+
+  async function loadLogs(run_id){
+    const r = await fetch(`/api/admin/logs?run_id=${run_id}&limit=50`, {headers: headers()});
+    const j = await r.json();
+    if(!j.ok){
+      $("jobLogs").textContent = "-";
+      return;
+    }
+    $("jobLogs").textContent = JSON.stringify(j.items||[], null, 2);
+  }
+
+  async function doAudit(run_id){
+    const r = await fetch("/api/seo_audit", {method:"POST", headers: headers(), body: JSON.stringify({run_id})});
+    const j = await r.json();
+    if(!j.ok){ alert("audit failed: " + (j.error||"")); return; }
+    await selectRun(run_id);
+    await loadRuns();
+  }
+
+  async function doFix(run_id){
+    const r = await fetch("/api/fix_to_pass", {method:"POST", headers: headers(), body: JSON.stringify({run_id, max_rounds:2})});
+    const j = await r.json();
+    if(!j.ok){ alert("fix failed: " + (j.error||"")); return; }
+    $("lastFixAuto").textContent = JSON.stringify(j, null, 2);
+    await selectRun(run_id);
+    await loadRuns();
+  }
+
+  async function doExport(run_id){
+    const r = await fetch("/api/export", {method:"POST", headers: headers(), body: JSON.stringify({run_id})});
+    const j = await r.json();
+    if(!j.ok){ alert("export failed: " + (j.error||"")); return; }
+    await selectRun(run_id);
+    await loadRuns();
+  }
+
+  async function doAuto(run_id){
+    const r = await fetch("/api/auto_pass_export", {method:"POST", headers: headers(), body: JSON.stringify({run_id, max_rounds:2})});
+    const j = await r.json();
+    if(!j.ok){ alert("auto failed: " + (j.error||"")); return; }
+    $("lastFixAuto").textContent = JSON.stringify(j, null, 2);
+    await selectRun(run_id);
+    await loadRuns();
+  }
+
+  async function doApprove(run_id, variant){
+    const r = await fetch("/api/approve", {
+      method:"POST",
+      headers: headers(),
+      body: JSON.stringify({ run_id, variant })
+    });
+    const j = await r.json();
+
+    if(!j.ok){
+      const msg = j.error || "approve failed";
+      const extra = j.hint ? `\n\n${j.hint}` : "";
+      alert(msg + extra);
+
+      if(j.summary){
+        $("lastFixAuto").textContent = JSON.stringify(j, null, 2);
+      }
+      return;
+    }
+
+    $("lastFixAuto").textContent = JSON.stringify(j, null, 2);
+    await selectRun(run_id);
+    await loadRuns();
+  }
+
+  async function doBulk(action){
+    const ids = Array.from(state.selectedSet.values());
+    if(ids.length===0){ alert("선택된 run_id가 없어"); return; }
+
+    const max_rounds = Number($("bulkRounds").value || 2);
+    const panel = $("bulkResults");
+    panel.style.display = "block";
+    panel.innerHTML = `<div class="resItem"><span class="pill ok">RUN</span><span class="mono">${action}</span><span class="mono">count=${ids.length}</span></div>`;
+
+    const r = await fetch("/api/admin/bulk_action", {
+      method:"POST",
+      headers: headers(),
+      body: JSON.stringify({run_ids: ids, action, max_rounds})
+    });
+    const j = await r.json();
+    if(!j.ok){
+      panel.innerHTML += `<div class="resItem"><span class="pill err">ERR</span><span>${j.error||"bulk failed"}</span></div>`;
+      return;
+    }
+
+    renderBulkResults(panel, j);
+
+    await loadRuns();
+    if(state.selectedRunId){
+      await selectRun(state.selectedRunId);
+    }
+  }
+
+  // --- embedded panel wiring
+  $("pvClose").onclick = closeEmbeddedPreview;
+  $("pvReload").onclick = reloadEmbeddedPreview;
+
+  $("cpClose").onclick = closeEmbeddedCompare;
+  $("cpReload").onclick = reloadEmbeddedCompare;
+  $("cpLeft").onchange = updateEmbeddedCompare;
+  $("cpRight").onchange = updateEmbeddedCompare;
+  $("cpSwap").onclick = ()=>{
+    const l = $("cpLeft").value;
+    const r = $("cpRight").value;
+    $("cpLeft").value = r;
+    $("cpRight").value = l;
+    updateEmbeddedCompare();
+  };
+
+  // --- UI wiring
+  $("tok").value = state.token;
+
+  $("saveTok").onclick = ()=>{
+    state.token = $("tok").value.trim();
+    localStorage.setItem("admin_token", state.token);
+    apiHealth();
+    loadRuns();
+  };
+
+  $("btnSearch").onclick = ()=>{ state.offset = 0; loadRuns(); };
+  $("btnRefresh").onclick = ()=> loadRuns();
+  $("prev").onclick = ()=>{ state.offset = Math.max(0, state.offset - state.limit); loadRuns(); };
+  $("next").onclick = ()=>{ state.offset = state.offset + state.limit; loadRuns(); };
+
+  $("q").addEventListener("keydown",(e)=>{
+    if(e.key==="Enter"){ state.offset=0; loadRuns(); }
+  });
+
+  $("chkAll").addEventListener("change",(e)=>{
+    const checked = e.target.checked;
+    document.querySelectorAll(".chk").forEach(chk=>{
+      chk.checked = checked;
+      const rid = Number(chk.dataset.id);
+      if(checked) state.selectedSet.add(rid);
+      else state.selectedSet.delete(rid);
+    });
+    updateSelCount();
+  });
+
+  $("bulkClear").onclick = ()=>{
+    state.selectedSet.clear();
+    document.querySelectorAll(".chk").forEach(chk=> chk.checked=false);
+    updateSelCount();
+    $("bulkResults").style.display="none";
+  };
+
+  $("bulkAudit").onclick = ()=> doBulk("AUDIT");
+  $("bulkFix").onclick = ()=> doBulk("FIX");
+  $("bulkAuto").onclick = ()=> doBulk("AUTO");
+  $("bulkExport").onclick = ()=> doBulk("EXPORT");
+
+  $("btnAudit").onclick = ()=> state.selectedRunId && doAudit(state.selectedRunId);
+  $("btnFix").onclick   = ()=> state.selectedRunId && doFix(state.selectedRunId);
+  $("btnExport").onclick= ()=> state.selectedRunId && doExport(state.selectedRunId);
+  $("btnAuto").onclick  = ()=> state.selectedRunId && doAuto(state.selectedRunId);
+
+  apiHealth();
+  loadRuns();
+</script>
+</body>
+</html>

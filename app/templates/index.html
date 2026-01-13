@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SEO Landing Ops Tool</title>
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#2563eb;
+      --good:#16a34a;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --chip:#f3f4f6;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text); }
+    a{ color:inherit; }
+    header{
+      position:sticky; top:0; z-index:10;
+      background:rgba(247,249,252,.9); backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{ max-width:1200px; margin:0 auto; padding:16px; }
+    .topbar{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+    .dot{ width:18px; height:18px; border-radius:6px; background:var(--accent); display:inline-block; }
+    .sub{ color:var(--muted); font-weight:600; font-size:12px; margin-left:6px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:16px;
+      padding:16px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow: 0 6px 18px rgba(15,23,42,.06);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:14px 14px 10px 14px;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+    }
+    .title{ font-weight:800; }
+    .desc{ color:var(--muted); font-size:12px; margin-top:4px; }
+    .card .bd{ padding:14px; }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .row.gap8{ gap:8px; }
+    .row.gap12{ gap:12px; }
+
+    .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+    label{ font-size:12px; color:var(--muted); font-weight:700; }
+    input[type="text"], input[type="number"], textarea, select{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      outline:none;
+      font-size:14px;
+    }
+    textarea{ min-height:140px; resize:vertical; }
+
+    .btn{
+      appearance:none; border:1px solid var(--line);
+      background:#fff; color:var(--text);
+      padding:9px 12px; border-radius:12px;
+      font-weight:800; cursor:pointer;
+    }
+    .btn:hover{ border-color:#cbd5e1; }
+    .btn.primary{ background:var(--accent); color:#fff; border-color:transparent; }
+    .btn.good{ background:rgba(22,163,74,.12); color:var(--good); border-color:rgba(22,163,74,.25); }
+    .btn.warn{ background:rgba(245,158,11,.12); color:var(--warn); border-color:rgba(245,158,11,.25); }
+    .btn.bad{ background:rgba(239,68,68,.10); color:var(--bad); border-color:rgba(239,68,68,.22); }
+    .btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--chip);
+      font-size:12px;
+      font-weight:800;
+    }
+    .pill .k{ color:var(--muted); font-weight:800; }
+    .pill.good{ background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.25); color:var(--good); }
+    .pill.warn{ background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.25); color:var(--warn); }
+    .pill.bad{  background:rgba(239,68,68,.08); border-color:rgba(239,68,68,.22); color:var(--bad); }
+
+    .split{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 980px){ .split{ grid-template-columns:1fr; } }
+
+    details{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fff;
+      margin-top:10px;
+    }
+    summary{ cursor:pointer; font-weight:900; list-style:none; }
+    summary::-webkit-details-marker{ display:none; }
+    .muted{ color:var(--muted); }
+
+    pre{
+      margin:10px 0 0 0;
+      padding:12px;
+      border-radius:12px;
+      background:#0b1020;
+      color:#e5e7eb;
+      overflow:auto;
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .issues{ display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+    .issue{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fff;
+    }
+    .issue .top{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      font-weight:900;
+    }
+    .badge{
+      font-size:11px; font-weight:900;
+      padding:4px 8px; border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--chip);
+    }
+    .badge.good{ color:var(--good); border-color:rgba(22,163,74,.25); background:rgba(22,163,74,.10); }
+    .badge.warn{ color:var(--warn); border-color:rgba(245,158,11,.25); background:rgba(245,158,11,.10); }
+    .badge.bad{  color:var(--bad);  border-color:rgba(239,68,68,.22); background:rgba(239,68,68,.08); }
+    .issue .hint{ margin-top:6px; color:var(--muted); font-size:12px; }
+
+    .toast{
+      margin-top:10px;
+      border:1px dashed #cbd5e1;
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fff;
+      font-size:12px;
+      color:var(--muted);
+      white-space:pre-wrap;
+    }
+
+    /* A/B cards */
+    .abgrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width: 980px){ .abgrid{ grid-template-columns:1fr; } }
+    .abcard{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:#fff;
+    }
+    .abhd{
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+    .abkv{ display:grid; grid-template-columns: 90px 1fr; gap:6px 10px; font-size:12px; }
+    .abkv .k{ color:var(--muted); font-weight:800; }
+    .abkv .v{ font-weight:800; }
+    .mini{ font-size:11px; color:var(--muted); font-weight:800; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <div>
+          SEO Landing Ops Tool
+          <span class="sub">Run Builder / A-B / Audit / Fix / Export</span>
+        </div>
+      </div>
+      <div style="flex:1"></div>
+      <a class="btn" href="/admin">Admin</a>
+    </div>
+  </div>
+</header>
+
+<div class="grid">
+  <!-- Left -->
+  <section class="card">
+    <div class="hd">
+      <div>
+        <div class="title">Run Builder</div>
+        <div class="desc">새 run 생성 또는 run_id로 로드 후 A/B → Approve → Audit/Fix/Export까지 처리</div>
+      </div>
+      <div class="row gap8">
+        <button class="btn" id="btnReset">Reset</button>
+      </div>
+    </div>
+
+    <div class="bd">
+      <div class="split">
+        <div class="field">
+          <label>run_id 로드</label>
+          <div class="row gap8">
+            <input type="number" id="loadRunId" placeholder="예: 13" style="max-width:220px"/>
+            <button class="btn" id="btnLoad">Load</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Intent</label>
+          <select id="intent">
+            <option value="구매형">구매형</option>
+            <option value="정보형">정보형</option>
+            <option value="비교형">비교형</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="field">
+          <label>Primary Keyword</label>
+          <input type="text" id="primary" placeholder="예: 세라마이드 크림"/>
+        </div>
+        <div class="field">
+          <label>Supporting Keywords (comma or newline)</label>
+          <input type="text" id="supporting" placeholder="예: 보습, 민감, 장벽"/>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="field">
+          <label>Meta Title</label>
+          <input type="text" id="metaTitle" placeholder="(선택) 비어도 됨 — Fix가 채워줌"/>
+        </div>
+        <div class="field">
+          <label>Meta Description</label>
+          <input type="text" id="metaDesc" placeholder="(선택) 비어도 됨 — Fix가 채워줌"/>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="field">
+          <label>Canonical URL</label>
+          <input type="text" id="canonical" placeholder="(선택) 비어도 됨 — /r/{run_id}로 fallback"/>
+        </div>
+        <div class="field">
+          <label>CTA</label>
+          <input type="text" id="cta" placeholder="예: 지금 구매하기"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Landing Text (원문 / 초안)</label>
+        <textarea id="landingText" placeholder="짧아도 괜찮습니다. Fix 단계에서 구조/FAQ/문장 보강까지 수행합니다."></textarea>
+      </div>
+
+      <div class="row gap8">
+        <button class="btn primary" id="btnCreate">Create Run</button>
+        <span class="muted" id="createdHint">create 후 run_id가 자동으로 선택됩니다.</span>
+      </div>
+
+      <div class="toast" id="leftToast">ready</div>
+    </div>
+  </section>
+
+  <!-- Right -->
+  <aside class="card">
+    <div class="hd">
+      <div>
+        <div class="title">Run Ops</div>
+        <div class="desc">A/B → Approve → Audit/Fix/Export 액션 실행</div>
+      </div>
+      <div class="row gap8">
+        <button class="btn" id="btnRefresh">Refresh</button>
+      </div>
+    </div>
+
+    <div class="bd">
+      <div class="row gap8" style="margin-bottom:10px;">
+        <span class="pill"><span class="k">selected</span> <span id="selRunId">-</span></span>
+        <span class="pill" id="pillAudit"><span class="k">AUDIT</span> <span id="auditOverall">-</span></span>
+        <span class="pill"><span class="k">STAGE</span> <span id="stage">-</span></span>
+        <span class="pill"><span class="k">SCORE</span> <span id="score">-</span></span>
+      </div>
+
+      <!-- A/B Optimize + Approve -->
+      <details open>
+        <summary>A/B Optimize + Approve</summary>
+
+        <div class="row gap8" style="margin-top:10px;">
+          <button class="btn primary" id="btnOptimize" disabled>Optimize A/B</button>
+          <button class="btn" id="btnCtr" disabled>Refresh CTR</button>
+        </div>
+
+        <div class="row gap8" style="margin-top:10px;">
+          <span class="pill"><span class="k">A CTR</span> <span id="ctrA">-</span></span>
+          <span class="pill"><span class="k">B CTR</span> <span id="ctrB">-</span></span>
+          <span class="pill"><span class="k">Recommend</span> <span id="ctrRec">-</span></span>
+          <span class="pill"><span class="k">MinViews</span> <span id="ctrMin">-</span></span>
+        </div>
+
+        <div class="row gap8" style="margin-top:10px;">
+          <button class="btn" id="btnApproveA" disabled>Approve A</button>
+          <button class="btn" id="btnApproveB" disabled>Approve B</button>
+          <button class="btn good" id="btnApproveRec" disabled>Approve RECOMMENDED</button>
+        </div>
+
+        <div class="abgrid" id="abGrid" style="display:none;">
+          <div class="abcard">
+            <div class="abhd">
+              <div>A Variant</div>
+              <div class="row gap8">
+                <button class="btn" id="btnAView" disabled>+view</button>
+                <button class="btn" id="btnACta" disabled>+cta</button>
+              </div>
+            </div>
+            <div class="abkv">
+              <div class="k">meta_title</div><div class="v" id="aTitle">-</div>
+              <div class="k">meta_desc</div><div class="v" id="aDesc">-</div>
+              <div class="k">headline</div><div class="v" id="aH1">-</div>
+              <div class="k">cta</div><div class="v" id="aCta">-</div>
+              <div class="k">faq_count</div><div class="v" id="aFaq">-</div>
+            </div>
+            <div class="mini" id="aQc"></div>
+          </div>
+
+          <div class="abcard">
+            <div class="abhd">
+              <div>B Variant</div>
+              <div class="row gap8">
+                <button class="btn" id="btnBView" disabled>+view</button>
+                <button class="btn" id="btnBCta" disabled>+cta</button>
+              </div>
+            </div>
+            <div class="abkv">
+              <div class="k">meta_title</div><div class="v" id="bTitle">-</div>
+              <div class="k">meta_desc</div><div class="v" id="bDesc">-</div>
+              <div class="k">headline</div><div class="v" id="bH1">-</div>
+              <div class="k">cta</div><div class="v" id="bCta">-</div>
+              <div class="k">faq_count</div><div class="v" id="bFaq">-</div>
+            </div>
+            <div class="mini" id="bQc"></div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Raw optimize/qc + CTR JSON</summary>
+          <pre id="rawAB">{}</pre>
+        </details>
+      </details>
+
+      <!-- Audit/Fix/Export -->
+      <div class="row gap8" style="margin-top:12px;">
+        <button class="btn" id="btnAudit" disabled>Audit</button>
+        <button class="btn bad" id="btnFix" disabled>Fix to PASS</button>
+        <button class="btn warn" id="btnAuto" disabled>Auto PASS + Export</button>
+        <button class="btn good" id="btnExport" disabled>Export (PASS only)</button>
+      </div>
+
+      <div class="row gap8" style="margin-top:12px;">
+        <input type="number" id="maxRounds" value="2" min="1" max="6" style="width:120px"/>
+        <span class="muted">max_rounds (Fix/Auto)</span>
+      </div>
+
+      <div class="row gap8" style="margin-top:12px;">
+        <button class="btn" id="btnOpenPreview" disabled>Open preview</button>
+        <button class="btn" id="btnOpenExport" disabled>Open export</button>
+        <button class="btn" id="btnDownload" disabled>Download file</button>
+      </div>
+
+      <div class="split" style="margin-top:12px;">
+        <div class="pill"><span class="k">Title Len</span> <span id="sigTitle">-</span></div>
+        <div class="pill"><span class="k">Desc Len</span> <span id="sigDesc">-</span></div>
+        <div class="pill"><span class="k">Word Count</span> <span id="sigWord">-</span></div>
+        <div class="pill"><span class="k">FAQ</span> <span id="sigFaq">-</span></div>
+      </div>
+
+      <details style="margin-top:14px;" open>
+        <summary>Audit Issues</summary>
+        <div class="issues" id="issues"></div>
+      </details>
+
+      <details>
+        <summary>Raw run JSON</summary>
+        <pre id="rawRun">{}</pre>
+      </details>
+
+      <details>
+        <summary>Last FIX/AUTO Response</summary>
+        <pre id="rawLast">{}</pre>
+      </details>
+
+      <div class="toast" id="rightToast">select a run…</div>
+    </div>
+  </aside>
+</div>
+
+<script>
+  const $ = (id)=>document.getElementById(id);
+
+  function setToast(el, msg){ el.textContent = msg; }
+  function chipAudit(overall){
+    const p = $("pillAudit");
+    p.classList.remove("good","warn","bad");
+    const v = (overall||"").toUpperCase();
+    if(v==="PASS") p.classList.add("good");
+    else if(v==="WARN") p.classList.add("warn");
+    else if(v==="FAIL") p.classList.add("bad");
+  }
+
+  function parseSupporting(v){
+    if(!v) return [];
+    return v.split(/[,\n]/).map(s=>s.trim()).filter(Boolean);
+  }
+
+  let currentRun = null;
+  let lastActionResp = null;
+  let lastAB = { optimize:null, qc:null, ctr:null };
+
+  function getSelectedId(){
+    const t = $("selRunId").textContent.trim();
+    const n = Number(t);
+    return Number.isFinite(n) ? n : null;
+  }
+  function setSelectedId(runId){
+    $("selRunId").textContent = runId ? String(runId) : "-";
+  }
+
+  function canAct(){
+    const rid = getSelectedId();
+    const on = !!rid;
+
+    // A/B
+    $("btnOptimize").disabled = !on;
+    $("btnCtr").disabled = !on;
+    $("btnApproveA").disabled = !on;
+    $("btnApproveB").disabled = !on;
+    $("btnApproveRec").disabled = !on;
+    $("btnAView").disabled = !on;
+    $("btnACta").disabled = !on;
+    $("btnBView").disabled = !on;
+    $("btnBCta").disabled = !on;
+
+    // Audit/Fix/Auto/Export
+    $("btnAudit").disabled = !on;
+    $("btnFix").disabled = !on;
+    $("btnAuto").disabled = !on;
+
+    $("btnOpenPreview").disabled = !on;
+  }
+
+  async function apiJSON(url, method="GET", body=null){
+    const opt = { method, headers: { "Content-Type":"application/json" } };
+    if(body) opt.body = JSON.stringify(body);
+    const r = await fetch(url, opt);
+    const data = await r.json().catch(()=>({}));
+    if(!r.ok){
+      const msg = (data && (data.error || data.detail)) ? (data.error || data.detail) : ("HTTP "+r.status);
+      // 400에서 hint/summary 같은 추가 정보가 있을 수 있음
+      const extra = [];
+      if(data && data.hint) extra.push("hint: " + data.hint);
+      if(data && data.summary) extra.push("summary: " + JSON.stringify(data.summary));
+      throw new Error(msg + (extra.length ? ("\n" + extra.join("\n")) : ""));
+    }
+    return data;
+  }
+
+  function fillFormFromRun(run){
+    $("intent").value = run.intent || "구매형";
+    $("primary").value = run.primary_keyword || "";
+    $("supporting").value = (run.supporting_keywords || []).join(", ");
+    $("metaTitle").value = run.meta_title || "";
+    $("metaDesc").value = run.meta_description || "";
+    $("landingText").value = run.landing_text || "";
+    $("canonical").value = run.canonical_url || "";
+    $("cta").value = run.cta || "";
+  }
+
+  function setSignals(audit){
+    const sig = (audit && audit.signals) ? audit.signals : {};
+    $("sigTitle").textContent = sig.title_len ?? "-";
+    $("sigDesc").textContent = sig.desc_len ?? "-";
+    $("sigWord").textContent = sig.word_count ?? "-";
+    $("sigFaq").textContent = sig.faq_count ?? "-";
+  }
+
+  function renderIssues(audit){
+    const box = $("issues");
+    box.innerHTML = "";
+    const issues = (audit && audit.issues) ? audit.issues : [];
+    if(!issues.length){
+      box.innerHTML = `<div class="muted">issues 없음</div>`;
+      return;
+    }
+    for(const it of issues){
+      const sev = (it.severity||"INFO").toUpperCase();
+      const badgeCls = sev==="FAIL" ? "bad" : (sev==="WARN" ? "warn" : "good");
+      const div = document.createElement("div");
+      div.className = "issue";
+      div.innerHTML = `
+        <div class="top">
+          <div>${it.rule_id || ""} · ${it.message || ""}</div>
+          <span class="badge ${badgeCls}">${sev}</span>
+        </div>
+        <div class="hint">${it.fix_hint || ""}</div>
+      `;
+      box.appendChild(div);
+    }
+  }
+
+  function setStatus(run){
+    currentRun = run;
+    const audit = run.audit || null;
+    const overall = audit ? (audit.overall || "-") : "-";
+    $("auditOverall").textContent = overall;
+    chipAudit(overall);
+
+    $("stage").textContent = run.stage || "-";
+    $("score").textContent = (audit && (audit.score ?? "-")) ?? "-";
+
+    setSignals(audit);
+    renderIssues(audit);
+
+    $("rawRun").textContent = JSON.stringify(run, null, 2);
+
+    const rid = run.run_id;
+    setSelectedId(rid);
+    canAct();
+
+    const isPass = (overall||"").toUpperCase() === "PASS";
+    $("btnExport").disabled = !(!!rid && isPass);
+    $("btnOpenExport").disabled = !(!!rid && run.export && run.export.path);
+    $("btnDownload").disabled = !(!!rid && run.export && run.export.path);
+
+    // A/B UI: optimize 정보가 있으면 카드 표시
+    const opt = run.optimize || null;
+    const qc  = run.qc || null;
+    if(opt && opt.variants){
+      renderAB(opt, qc);
+      $("abGrid").style.display = "grid";
+    }else{
+      $("abGrid").style.display = "none";
+    }
+
+    setToast($("rightToast"), `loaded run_id=${rid}`);
+  }
+
+  async function loadRun(runId){
+    if(!runId) throw new Error("run_id가 비었습니다.");
+    const data = await apiJSON(`/api/run/${runId}`);
+    if(!data.ok) throw new Error("load failed");
+    fillFormFromRun(data.run);
+    setStatus(data.run);
+  }
+
+  function renderAB(opt, qc){
+    const vA = (opt.variants && opt.variants.A) ? opt.variants.A : {};
+    const vB = (opt.variants && opt.variants.B) ? opt.variants.B : {};
+
+    $("aTitle").textContent = vA.meta_title || "-";
+    $("aDesc").textContent  = vA.meta_description || "-";
+    $("aH1").textContent    = vA.hero_headline || "-";
+    $("aCta").textContent   = vA.cta || "-";
+    $("aFaq").textContent   = (vA.faq && vA.faq.length) ? String(vA.faq.length) : "0";
+
+    $("bTitle").textContent = vB.meta_title || "-";
+    $("bDesc").textContent  = vB.meta_description || "-";
+    $("bH1").textContent    = vB.hero_headline || "-";
+    $("bCta").textContent   = vB.cta || "-";
+    $("bFaq").textContent   = (vB.faq && vB.faq.length) ? String(vB.faq.length) : "0";
+
+    const qcA = qc && qc.A ? qc.A : null;
+    const qcB = qc && qc.B ? qc.B : null;
+    $("aQc").textContent = qcA ? ("QC(A): " + JSON.stringify(qcA)) : "";
+    $("bQc").textContent = qcB ? ("QC(B): " + JSON.stringify(qcB)) : "";
+  }
+
+  function renderCTR(summary){
+    if(!summary){
+      $("ctrA").textContent = "-";
+      $("ctrB").textContent = "-";
+      $("ctrRec").textContent = "-";
+      $("ctrMin").textContent = "-";
+      return;
+    }
+    const A = summary.A || {};
+    const B = summary.B || {};
+    const fmt = (x)=> (x===undefined || x===null) ? "-" : String(x);
+
+    $("ctrA").textContent = `view ${fmt(A.view)} / cta ${fmt(A.cta_click)} / ctr ${fmt(A.ctr)}`;
+    $("ctrB").textContent = `view ${fmt(B.view)} / cta ${fmt(B.cta_click)} / ctr ${fmt(B.ctr)}`;
+    $("ctrRec").textContent = fmt(summary.recommend_variant || "-");
+    $("ctrMin").textContent = fmt(summary.min_views_required ?? "-");
+  }
+
+  function refreshRawAB(){
+    $("rawAB").textContent = JSON.stringify(lastAB, null, 2);
+  }
+
+  async function refreshCTR(){
+    const rid = getSelectedId();
+    if(!rid) return;
+    const data = await apiJSON(`/api/ctr_summary?run_id=${rid}`);
+    lastAB.ctr = data.summary || null;
+    renderCTR(lastAB.ctr);
+    refreshRawAB();
+  }
+
+  async function recordEvent(variant, eventName){
+    const rid = getSelectedId();
+    if(!rid) throw new Error("run_id 없음");
+    await apiJSON(`/api/event`, "POST", { run_id: rid, variant, event_name: eventName });
+    // 체감 개선: 이벤트 기록 후 CTR 즉시 갱신
+    await refreshCTR();
+  }
+
+  // ===== Builder
+  $("btnCreate").addEventListener("click", async ()=>{
+    try{
+      setToast($("leftToast"), "creating…");
+      const payload = {
+        meta_title: $("metaTitle").value || "",
+        meta_description: $("metaDesc").value || "",
+        landing_text: $("landingText").value || "",
+        primary_keyword: $("primary").value || "",
+        supporting_keywords: parseSupporting($("supporting").value || ""),
+        intent: $("intent").value || "구매형",
+        canonical_url: $("canonical").value || "",
+        cta: $("cta").value || ""
+      };
+      const data = await apiJSON(`/api/run/new`, "POST", payload);
+      const rid = data.run && data.run.run_id;
+      setToast($("leftToast"), `created run_id=${rid}`);
+      if(rid){
+        $("loadRunId").value = rid;
+        await loadRun(rid);
+      }
+    }catch(e){
+      setToast($("leftToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnLoad").addEventListener("click", async ()=>{
+    try{
+      const rid = Number($("loadRunId").value);
+      setToast($("leftToast"), `loading run_id=${rid}…`);
+      await loadRun(rid);
+      setToast($("leftToast"), `loaded run_id=${rid}`);
+      // 로드 후 CTR도 한번 뿌려주기
+      await refreshCTR().catch(()=>{});
+    }catch(e){
+      setToast($("leftToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnRefresh").addEventListener("click", async ()=>{
+    try{
+      const rid = getSelectedId() || Number($("loadRunId").value);
+      if(!rid) throw new Error("run_id 없음");
+      await loadRun(rid);
+      await refreshCTR().catch(()=>{});
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  // ===== A/B
+  $("btnOptimize").addEventListener("click", async ()=>{
+    try{
+      const rid = getSelectedId();
+      if(!rid) throw new Error("run_id 없음");
+      setToast($("rightToast"), "optimize_ab…");
+      const data = await apiJSON(`/api/optimize_ab`, "POST", { run_id: rid });
+      lastAB.optimize = data.optimize || null;
+      lastAB.qc = data.qc || null;
+      refreshRawAB();
+      // 최종 run을 다시 로드해서 stage/optimize를 화면에 반영
+      await loadRun(rid);
+      await refreshCTR().catch(()=>{});
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnCtr").addEventListener("click", async ()=>{
+    try{
+      setToast($("rightToast"), "refresh ctr…");
+      await refreshCTR();
+      setToast($("rightToast"), "ctr updated");
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnAView").addEventListener("click", async ()=>{ try{ await recordEvent("A","view"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+  $("btnACta").addEventListener("click", async ()=>{ try{ await recordEvent("A","cta_click"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+  $("btnBView").addEventListener("click", async ()=>{ try{ await recordEvent("B","view"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+  $("btnBCta").addEventListener("click", async ()=>{ try{ await recordEvent("B","cta_click"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+
+  async function approveVariant(v){
+    const rid = getSelectedId();
+    if(!rid) throw new Error("run_id 없음");
+    setToast($("rightToast"), `approve ${v}…`);
+    const data = await apiJSON(`/api/approve`, "POST", { run_id: rid, variant: v });
+    // approve 후 run 스냅샷이 바뀌므로 로드
+    await loadRun(rid);
+    await refreshCTR().catch(()=>{});
+    setToast($("rightToast"), `approved: ${JSON.stringify(data.approved)}`);
+  }
+  $("btnApproveA").addEventListener("click", async ()=>{ try{ await approveVariant("A"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+  $("btnApproveB").addEventListener("click", async ()=>{ try{ await approveVariant("B"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+  $("btnApproveRec").addEventListener("click", async ()=>{ try{ await approveVariant("RECOMMENDED"); }catch(e){ setToast($("rightToast"),"ERR: "+e.message);} });
+
+  // ===== Audit/Fix/Export
+  $("btnAudit").addEventListener("click", async ()=>{
+    try{
+      const rid = getSelectedId();
+      if(!rid) throw new Error("run_id 없음");
+      setToast($("rightToast"), "audit…");
+      const data = await apiJSON(`/api/seo_audit`, "POST", { run_id: rid });
+      lastActionResp = data;
+      $("rawLast").textContent = JSON.stringify(data, null, 2);
+      await loadRun(rid);
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnFix").addEventListener("click", async ()=>{
+    try{
+      const rid = getSelectedId();
+      if(!rid) throw new Error("run_id 없음");
+      const rounds = Number($("maxRounds").value || 2);
+      setToast($("rightToast"), `fix_to_pass… (max_rounds=${rounds})`);
+      const data = await apiJSON(`/api/fix_to_pass`, "POST", { run_id: rid, max_rounds: rounds });
+      lastActionResp = data;
+      $("rawLast").textContent = JSON.stringify(data, null, 2);
+      await loadRun(rid);
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnAuto").addEventListener("click", async ()=>{
+    try{
+      const rid = getSelectedId();
+      if(!rid) throw new Error("run_id 없음");
+      const rounds = Number($("maxRounds").value || 2);
+      setToast($("rightToast"), `auto_pass_export… (max_rounds=${rounds})`);
+      const data = await apiJSON(`/api/auto_pass_export`, "POST", { run_id: rid, max_rounds: rounds });
+      lastActionResp = data;
+      $("rawLast").textContent = JSON.stringify(data, null, 2);
+      await loadRun(rid);
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnExport").addEventListener("click", async ()=>{
+    try{
+      const rid = getSelectedId();
+      if(!rid) throw new Error("run_id 없음");
+      setToast($("rightToast"), "export…");
+      const data = await apiJSON(`/api/export`, "POST", { run_id: rid });
+      lastActionResp = data;
+      $("rawLast").textContent = JSON.stringify(data, null, 2);
+      await loadRun(rid);
+    }catch(e){
+      setToast($("rightToast"), "ERR: "+e.message);
+    }
+  });
+
+  $("btnOpenPreview").addEventListener("click", ()=>{
+    const rid = getSelectedId();
+    if(!rid) return;
+    window.open(`/r/${rid}`, "_blank");
+  });
+
+  $("btnOpenExport").addEventListener("click", ()=>{
+    const rid = getSelectedId();
+    if(!rid) return;
+    window.open(`/api/export/open?run_id=${rid}`, "_blank");
+  });
+
+  $("btnDownload").addEventListener("click", ()=>{
+    const rid = getSelectedId();
+    if(!rid) return;
+    window.open(`/api/export/file?run_id=${rid}`, "_blank");
+  });
+
+  // ===== Reset
+  $("btnReset").addEventListener("click", ()=>{
+    currentRun = null;
+    lastActionResp = null;
+    lastAB = { optimize:null, qc:null, ctr:null };
+
+    setSelectedId(null);
+    $("loadRunId").value = "";
+    $("primary").value = "";
+    $("supporting").value = "";
+    $("metaTitle").value = "";
+    $("metaDesc").value = "";
+    $("landingText").value = "";
+    $("canonical").value = "";
+    $("cta").value = "";
+
+    $("auditOverall").textContent = "-";
+    $("stage").textContent = "-";
+    $("score").textContent = "-";
+    $("sigTitle").textContent = "-";
+    $("sigDesc").textContent = "-";
+    $("sigWord").textContent = "-";
+    $("sigFaq").textContent = "-";
+    $("issues").innerHTML = `<div class="muted">issues 없음</div>`;
+    $("rawRun").textContent = "{}";
+    $("rawLast").textContent = "{}";
+
+    $("ctrA").textContent = "-";
+    $("ctrB").textContent = "-";
+    $("ctrRec").textContent = "-";
+    $("ctrMin").textContent = "-";
+    $("rawAB").textContent = "{}";
+    $("abGrid").style.display = "none";
+
+    chipAudit("-");
+    canAct();
+    $("btnExport").disabled = true;
+    $("btnOpenExport").disabled = true;
+    $("btnDownload").disabled = true;
+
+    setToast($("leftToast"), "ready");
+    setToast($("rightToast"), "select a run…");
+  });
+
+  // init
+  canAct();
+  renderIssues(null);
+  chipAudit("-");
+</script>
+</body>
+</html>
