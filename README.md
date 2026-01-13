@@ -7,13 +7,6 @@ FastAPI + SQLite 기반의 SEO 랜딩 운영 자동화(Ops) 내부 도구 프로
 ---
 
 ## Preview (Screenshots)
-아래 4장만 있으면 README 퀄리티가 확 올라가.
-- Run Builder (입력)  
-- Admin Compare A/B (좌/우 비교)  
-- CTR Summary + Recommend  
-- Audit FAIL → Fix → PASS → Export
-
-
 ![Home](docs/Home.png)
 ![Admin](docs/Admin.png)
 ![ctr](docs/A.png)
